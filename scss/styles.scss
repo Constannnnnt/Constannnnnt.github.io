@@ -96,7 +96,7 @@ body {
 
 // No JS styles
 .no-js {
-    #experience-timeline {
+    .experience-timeline {
         > div {
             background: $background;
             padding: 10px;
@@ -485,7 +485,7 @@ footer {
     }
 }
 
-#experience-timeline {
+.experience-timeline {
     margin: 30px auto 0 auto;
     position: relative;
     max-width: 1000px;
@@ -854,7 +854,7 @@ footer {
 // Collapse timeline
 @media only screen and (max-width: 750px) {
 
-    #experience-timeline {
+    .experience-timeline {
         &:before, &:after {
             left: 23px;
         }
