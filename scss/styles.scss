@@ -717,13 +717,14 @@ footer {
 }
 
 .crop {
-    width: 670px;
+    width: 700px;
     white-space: nowrap;
     overflow: auto;
+    line-height: 10px;
 }
 
 .publication-block {
-    max-width: 700px;
+    max-width: 750px;
     margin: 0 auto 30px auto;
     padding: 15px;
     border: 1px solid $border;
@@ -950,7 +951,7 @@ footer {
 }
 
 .list-unstyled{
-	margin-bottom: 5px;
+	margin-bottom: 0px;
 }
 
 
