@@ -756,13 +756,16 @@ footer {
         margin: 0 0 15px 0;
     }
 
-    p, ul {
+    p {
         margin: 0;
         color: $text;
-        font-size: 0.9em;
+        font-size: 0.7em;
     }
 
     ul {
+        margin: 0;
+        color: $text;
+        font-size: 0.9em;
         padding: 0 0 0 15px;
     }
 }
