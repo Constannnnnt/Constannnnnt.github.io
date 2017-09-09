@@ -843,6 +843,10 @@ footer {
         resize: none;
     }
 
+    ul {
+        list-style-type: none;
+    }
+
     button {
         display: block;
         width: 100%;
@@ -861,10 +865,10 @@ footer {
     }
 }
 
-ul .list-unstyled{
+.list-unstyled{
 	margin-bottom: 5px;
-    list-style-type: none;
 }
+
 
 /*
     ---------------------------------------
