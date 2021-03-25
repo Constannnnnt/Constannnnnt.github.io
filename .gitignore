@@ -39,7 +39,7 @@ node_modules/
 _site
 
 .bundle
-.sass-cache
+.sass-cacheg
 .jekyll-metadata
 .DS_store
 .ruby-version
