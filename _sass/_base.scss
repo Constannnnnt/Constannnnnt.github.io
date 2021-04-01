@@ -182,10 +182,14 @@ a, table.table a {
 .news table td {
   font-size: 1rem;
   color: var(--global-text-color);
+  padding-top: .3rem;
+  padding-bottom: .3rem;
 }
 
 .news table th {
   color: var(--global-text-color);
+  padding-top: .3rem;
+  padding-bottom: .3rem;
 }
 
 // Social (bottom)
@@ -321,7 +325,7 @@ footer.sticky-bottom {
 // Publications
 
 .publications {
-  margin-top: 2rem;
+  margin-top: 1rem;
   h1 {
     color: var(--global-theme-color);
     font-size: 2rem;
