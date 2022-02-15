@@ -1,0 +1,590 @@
+I"¦*<div class="publications">
+
+
+  <h2 class="year">2021</h2>
+  <ol class="bibliography"><li><div class="row">
+  <div class="col-sm-2 abbr">
+  
+    
+    <abbr class="badge">INTERACT</abbr>
+    
+  
+  </div>
+
+  <div id="chen2021empirical" class="col-sm-8">
+    
+      <div class="title">Empirical evaluation of moving target selection in virtual reality using egocentric metaphors</div>
+      <div class="author">
+        
+          
+          
+          
+          
+
+          
+            
+              
+                <em>Chen, Yuan</em>,
+              
+            
+          
+        
+          
+          
+          
+          
+
+          
+            
+              
+                
+                  Sun, Junwei,
+                
+              
+            
+          
+        
+          
+          
+          
+          
+
+          
+            
+              
+                
+                  Xu, Qiang,
+                
+              
+            
+          
+        
+          
+          
+          
+          
+
+          
+            
+              
+                
+                  Lank, Edward,
+                
+              
+            
+          
+        
+          
+          
+          
+          
+
+          
+            
+              
+                
+                  Irani, Pourang,
+                
+              
+            
+          
+        
+          
+          
+          
+          
+
+          
+            
+              
+                
+                  and Li, Wei
+                
+              
+            
+          
+        
+      </div>
+
+      <div class="periodical">
+      
+        <em>IFIP Conference on Human-Computer Interaction</em>
+      
+      
+        2021
+      
+      </div>
+    
+
+    <div class="links">
+    
+    
+      <a href="https://link.springer.com/chapter/10.1007/978-3-030-85610-6_3" class="btn btn-sm z-depth-0" role="button" target="_blank">Url</a>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    </div>
+
+    <!-- Hidden abstract block -->
+    
+  </div>
+</div>
+</li>
+<li><div class="row">
+  <div class="col-sm-2 abbr">
+  
+    
+    <abbr class="badge">INTERACT</abbr>
+    
+  
+  </div>
+
+  <div id="chen2021global" class="col-sm-8">
+    
+      <div class="title">Global Scene Filtering, Exploration, and Pointing in Occluded Virtual Space</div>
+      <div class="author">
+        
+          
+          
+          
+          
+
+          
+            
+              
+                <em>Chen, Yuan</em>,
+              
+            
+          
+        
+          
+          
+          
+          
+
+          
+            
+              
+                
+                  Sun, Junwei,
+                
+              
+            
+          
+        
+          
+          
+          
+          
+
+          
+            
+              
+                
+                  Xu, Qiang,
+                
+              
+            
+          
+        
+          
+          
+          
+          
+
+          
+            
+              
+                
+                  Lank, Edward,
+                
+              
+            
+          
+        
+          
+          
+          
+          
+
+          
+            
+              
+                
+                  Irani, Pourang,
+                
+              
+            
+          
+        
+          
+          
+          
+          
+
+          
+            
+              
+                
+                  and Li, Wei
+                
+              
+            
+          
+        
+      </div>
+
+      <div class="periodical">
+      
+        <em>IFIP Conference on Human-Computer Interaction</em>
+      
+      
+        2021
+      
+      </div>
+    
+
+    <div class="links">
+    
+    
+      <a href="https://link.springer.com/chapter/10.1007/978-3-030-85607-6_11" class="btn btn-sm z-depth-0" role="button" target="_blank">Url</a>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    </div>
+
+    <!-- Hidden abstract block -->
+    
+  </div>
+</div>
+</li></ol>
+
+  <h2 class="year">2020</h2>
+  <ol class="bibliography"><li><div class="row">
+  <div class="col-sm-2 abbr">
+  
+    
+    <abbr class="badge">CHI</abbr>
+    
+  
+  </div>
+
+  <div id="10.1145/3313831.3376592" class="col-sm-8">
+    
+      <div class="title">Understanding Viewport- and World-Based Pointing with Everyday Smart Devices in Immersive Augmented Reality</div>
+      <div class="author">
+        
+          
+          
+          
+          
+
+          
+            
+              
+                <em>Chen, Yuan</em>,
+              
+            
+          
+        
+          
+          
+          
+          
+
+          
+            
+              
+                
+                  Katsuragawa, Keiko,
+                
+              
+            
+          
+        
+          
+          
+          
+          
+
+          
+            
+              
+                
+                  and Lank, Edward
+                
+              
+            
+          
+        
+      </div>
+
+      <div class="periodical">
+      
+        <em>Proceedings of the 2020 CHI Conference on Human Factors in Computing Systems</em>
+      
+      
+        2020
+      
+      </div>
+    
+
+    <div class="links">
+    
+      <a class="abstract btn btn-sm z-depth-0" role="button">Abs</a>
+    
+    
+      <a href="https://doi.org/10.1145/3313831.3376592" class="btn btn-sm z-depth-0" role="button" target="_blank">Url</a>
+    
+    
+    
+      <a href="https://www.youtube.com/watch?v=QQCwILEpABM" class="btn btn-sm z-depth-0" role="button" target="_blank">Video</a>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    </div>
+
+    <!-- Hidden abstract block -->
+    
+    <div class="abstract hidden">
+      <p>Personal smart devices have demonstrated a variety of efficient techniques for pointing and selecting on physical displays. However, when migrating these input techniques to augmented reality, it is both unclear what the relative performance of different techniques will be given the immersive nature of the environment, and it is unclear how viewport-based versus world-based pointing methods will impact performance. To better understand the impact of device and viewing perspectives on pointing in augmented reality, we present the results of two controlled experiments comparing pointing conditions that leverage various smartphone- and smartwatch-based external display pointing techniques and examine viewport-based versus world-based target acquisition paradigms. Our results demonstrate that viewport-based techniques offer faster selection and that both smartwatch- and smartphone-based pointing techniques represent high-performance options for performing distant target acquisition tasks in augmented reality.</p>
+    </div>
+    
+  </div>
+</div>
+</li>
+<li><div class="row">
+  <div class="col-sm-2 abbr">
+  
+  </div>
+
+  <div id="ChenYuan2020" class="col-sm-8">
+    
+      <span id="ChenYuan2020">Chen, Y. (2020). <i>Viewport- and World-based Personal Device Point-Select Interactions in the Augmented Reality</i>. UWSpace.</span>
+    
+
+    <div class="links">
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    </div>
+
+    <!-- Hidden abstract block -->
+    
+  </div>
+</div>
+</li></ol>
+
+  <h2 class="year">2018</h2>
+  <ol class="bibliography"><li><div class="row">
+  <div class="col-sm-2 abbr">
+  
+    
+    <abbr class="badge">VIS</abbr>
+    
+  
+  </div>
+
+  <div id="8019873" class="col-sm-8">
+    
+      <div class="title">SkyLens: Visual Analysis of Skyline on Multi-Dimensional Data</div>
+      <div class="author">
+        
+          
+          
+          
+          
+
+          
+            
+              
+                
+                  Zhao, X.,
+                
+              
+            
+          
+        
+          
+          
+          
+          
+
+          
+            
+              
+                
+                  Wu, Y.,
+                
+              
+            
+          
+        
+          
+          
+          
+          
+
+          
+            
+              
+                
+                  Cui, W.,
+                
+              
+            
+          
+        
+          
+          
+          
+          
+
+          
+            
+              
+                
+                  Du, X.,
+                
+              
+            
+          
+        
+          
+          
+          
+          
+
+          
+            
+              
+                <em>Chen, Y.</em>,
+              
+            
+          
+        
+          
+          
+          
+          
+
+          
+            
+              
+                
+                  Wang, Y.,
+                
+              
+            
+          
+        
+          
+          
+          
+          
+
+          
+            
+              
+                
+                  Lee, D. L.,
+                
+              
+            
+          
+        
+          
+          
+          
+          
+
+          
+            
+              
+                
+                  and Qu, H.
+                
+              
+            
+          
+        
+      </div>
+
+      <div class="periodical">
+      
+        <em>IEEE Transactions on Visualization and Computer Graphics</em>
+      
+      
+        2018
+      
+      </div>
+    
+
+    <div class="links">
+    
+      <a class="abstract btn btn-sm z-depth-0" role="button">Abs</a>
+    
+    
+      <a href="https://ieeexplore.ieee.org/document/8019873" class="btn btn-sm z-depth-0" role="button" target="_blank">Url</a>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    </div>
+
+    <!-- Hidden abstract block -->
+    
+    <div class="abstract hidden">
+      <p>Skyline queries have wide-ranging applications in fields that involve multi-criteria decision making, including tourism, retail industry, and human resources. By automatically removing incompetent candidates, skyline queries allow users to focus on a subset of superior data items (i.e., the skyline), thus reducing the decision-making overhead. However, users are still required to interpret and compare these superior items manually before making a successful choice. This task is challenging because of two issues. First, people usually have fuzzy, unstable, and inconsistent preferences when presented with multiple candidates. Second, skyline queries do not reveal the reasons for the superiority of certain skyline points in a multi-dimensional space. To address these issues, we propose SkyLens, a visual analytic system aiming at revealing the superiority of skyline points from different perspectives and at different scales to aid users in their decision making. Two scenarios demonstrate the usefulness of SkyLens on two datasets with a dozen of attributes. A qualitative study is also conducted to show that users can efficiently accomplish skyline understanding and comparison tasks with SkyLens.</p>
+    </div>
+    
+  </div>
+</div>
+</li></ol>
+
+
+</div>
+:ET
