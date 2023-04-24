@@ -2,7 +2,7 @@
 layout: about
 title: about
 permalink: /
-description: Ph.D student at <a href="http://hci.cs.uwaterloo.ca/" target="_blank">WaterlooHCI</a> & <a href="https://loki.lille.inria.fr/index.html" target="_blank">Loki</a>.
+description: Ph.D candidate at <a href="http://hci.cs.uwaterloo.ca/" target="_blank">WaterlooHCI</a> & <a href="https://loki.lille.inria.fr/index.html" target="_blank">Loki</a>.
 
 
 profile:
