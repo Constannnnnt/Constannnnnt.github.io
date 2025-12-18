@@ -234,7 +234,7 @@ const Index = () => {
                 <div className="w-12 h-1 bg-primary" />
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
+              <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8 items-start">
                 {projects.length === 0 ? (
                   <p className="text-muted-foreground italic col-span-full">No projects listed yet.</p>
                 ) : (

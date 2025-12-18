@@ -51,7 +51,7 @@ export const ProjectCard = ({
 
   return (
     <div
-      className="flex flex-col h-full bg-card/30 border border-border/50 hover:border-primary/30 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:shadow-primary/5 group animate-fade-in"
+      className="flex flex-col min-h-[500px] bg-card/30 border border-border/50 hover:border-primary/30 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:shadow-primary/5 group animate-fade-in"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
