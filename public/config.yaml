@@ -1,0 +1,230 @@
+profile:
+  name: "Constant, Yuan Chen"
+  title: "Researcher & Engineer in HCI, XR, and AI"
+  email: "constant.chen@uwaterloo.ca"
+  imageUrl: "/assets/avatar.jpg"
+  bio: |
+    I am actively looking for full-time opportunities to work in the field of HCI, XR, and AI.
+
+    I design and build systems that enable seamless interaction anytime, anywhere, and study how people behave and interact across different computing environments. My PhD focuses on pervasive desktop computing and context-aware mixed environments using projection mapping, sensing, and vision inputs. 
+    
+    I also research Human–AI interaction, with an emphasis on how people understand, collaborate with, and benefit from agentic systems, which I both study and build.
+
+    Feel free to get in touch if you want to discuss collaboration opportunities.
+  social:
+    github: "https://github.com/Constannnnnt"
+    twitter: "https://twitter.com/Constannnnnt"
+    linkedin: "https://linkedin.com/in/yuanchen525"
+    googleScholar: "https://scholar.google.com/citations?user=f0dkPBsAAAAJ"
+
+publications:
+  - title: "Scene Understanding via Scene Representation Generation with Vision-Language Models"
+    venue: "NeurIPS 2025 Workshop"
+    tags: ["computer vision", "vision-language models", "scene understanding"]
+    authors: "Yuan Chen, Peng Shi"
+    highlightAuthor: "Yuan Chen"
+    imageUrl: "/assets/img/scenelang.png"
+    gifUrl: "/assets/img/scenelang.png"
+    paperUrl: "https://openreview.net/forum?id=Vbp5QWnJtt&noteId=Ilwn4YEgg0"
+    summary:
+      - "Explores using Vision-Language Models for scene representation generation."
+    categories: ["computer", ""]
+
+  - title: "Understanding Dynamic Peephole Pointing using Coupled and Decoupled Target Acquisition on Single and Multiple Surfaces"
+    venue: "AHs 2025"
+    tags: ["spatial interaction", "peephole interaction", "target acquisition", ""]
+    authors: "Yuan Chen, Géry Casiez, Sylvain Malacria, and Daniel Vogel"
+    highlightAuthor: "Yuan Chen"
+    imageUrl: "/assets/img/peephole.jpg"
+    gifUrl: "/assets/img/peephole.jpg"
+    paperUrl: "https://dl.acm.org/doi/full/10.1145/3745900.3746101"
+    videoUrl: "https://youtu.be/jQPJ5JysA6Q"
+    codeUrl: "https://github.com/Constannnnnt/Peephole-Interactions"
+    summary:
+      - "Proposes a dynamic peephole interaction system across single and multiple surfaces."
+      - "Evaluates coupled and decoupled target acquisition methods and investigates their impacts on human behaviors."
+    categories: ["people", "environment", "connect", "bridge", "computer"]
+
+  - title: "LuxAR: A Direct Manipulation Projected Display to Extend and Augment Desktop Computing"
+    venue: "GI 2024"
+    tags: ["extended reality", "projected display", "spatial interaction", "sensing", "vision"]
+    authors: "Yuan Chen, Géry Casiez, Sylvain Malacria, and Daniel Vogel"
+    highlightAuthor: "Yuan Chen"
+    imageUrl: "/assets/img/luxar.png"
+    gifUrl: "/assets/img/luxar.png"
+    codeUrl: "https://github.com/Constannnnnt/LuxAR"
+    paperUrl: "https://dl.acm.org/doi/abs/10.1145/3670947.3670981"
+    videoUrl: "https://youtu.be/Jq5iZiO15bs"
+    summary:
+      - "Designed a direct manipulation projected display system"
+      - "Augmented desktop computing with spatial interaction"
+    categories: ["environment", "connect", "bridge", "computer", "interact","people"]
+
+  - title: "Exploring the Effects of Intended Use on Targeting in Virtual Reality"
+    venue: "GI 2023"
+    tags: ["virtual reality", "targeting", "interaction design"]
+    authors: "Yuan Chen, Géry Casiez, Sylvain Malacria, and Ed Lank"
+    highlightAuthor: "Yuan Chen"
+    imageUrl: "/assets/img/intendeduse.png"
+    gifUrl: "/assets/img/intendeduse.png"
+    paperUrl: "https://openreview.net/forum?id=1ZaehYEBigC"
+    videoUrl: "https://youtu.be/MZCdGWN3lOc"
+    codeUrl: "https://github.com/Constannnnnt/VRII-Intended-Interactions"
+    summary:
+      - "Studied targeting performance in VR based on intent"
+    categories: ["computer", "people", "interact"]
+
+  - title: "Empirical evaluation of moving target selection in virtual reality using egocentric metaphors"
+    venue: "INTERACT 2021"
+    tags: ["virtual reality", "target selection", "egocentric metaphors"]
+    authors: "Yuan Chen, Junwei Sun, Qiang Xu, Edward Lank, Pourang Irani, and Wei Li"
+    highlightAuthor: "Yuan Chen"
+    imageUrl: "/assets/img/mts.png"
+    gifUrl: "/assets/img/mts.png"
+    paperUrl: "https://link.springer.com/chapter/10.1007/978-3-030-85610-6_3"
+    videoUrl: "https://youtu.be/VPWXA4C0150"
+    summary:
+      - "Evaluated moving target selection in VR"
+    categories: ["computer", "people", "interact"]
+
+  - title: "Global Scene Filtering, Exploration, and Pointing in Occluded Virtual Space"
+    venue: "INTERACT 2021"
+    tags: ["virtual reality", "scene filtering", "pointing"]
+    authors: "Yuan Chen, Junwei Sun, Qiang Xu, Edward Lank, Pourang Irani, and Wei Li"
+    highlightAuthor: "Yuan Chen"
+    imageUrl: "/assets/img/globalfilter.png"
+    gifUrl: "/assets/img/globalfilter.png"
+    paperUrl: "https://link.springer.com/chapter/10.1007/978-3-030-85607-6_11"
+    videoUrl: "https://youtu.be/qG7r5WtkiUA"
+    summary:
+      - "Proposed filtering techniques for occluded spaces"
+    categories: ["computer", "people", "interact"]
+
+  - title: "Understanding Viewport- and World-Based Pointing with Everyday Smart Devices in Immersive Augmented Reality"
+    venue: "CHI 2020"
+    tags: ["augmented reality", "mobile devices", "pointing"]
+    authors: "Yuan Chen, Keiko Katsuragawa, and Edward Lank"
+    highlightAuthor: "Yuan Chen"
+    imageUrl: "/assets/img/viewport.png"
+    gifUrl: "/assets/img/viewport.png"
+    paperUrl: "https://doi.org/10.1145/3313831.3376592"
+    videoUrl: "https://www.youtube.com/watch?v=QQCwILEpABM"
+    summary:
+      - "Compared viewport- vs world-based pointing in AR"
+    categories: ["computer", "people", "interact", "environment", "connect", "bridge"]
+
+  - title: "SkyLens: Visual Analysis of Skyline on Multi-Dimensional Data"
+    venue: "VIS 2017"
+    tags: ["visual analytics", "skyline queries", "data visualization"]
+    authors: "Xun Zhao, Yanhong Wu, Weiwei Cui, Xinnan Du, Yuan Chen, Yong Wang, Dik Lun Lee, Huamin Qu"
+    highlightAuthor: "Yuan Chen"
+    imageUrl: "/assets/img/skylens.png"
+    gifUrl: "/assets/img/skylens.png"
+    paperUrl: "https://ieeexplore.ieee.org/document/8019873"
+    summary:
+      - "Visual analytic system for skyline queries"
+    categories: ["computer", "people", "interact"]
+
+projects:
+  - title: "Penguin Studio"
+    description: "Penguin Studio is an image generation and editing platform that combines text-to-image synthesis with automatic object detection and semantic scene configuration."
+    imageUrl: "/assets/img/penguin.png"
+    tags: ["Full-stack", "Vision", "Prompt Engineering", "Chain of Interactions","Human-AI Collaboration"]
+    githubUrl: "https://github.com/Constannnnnt/Penguin-Studio"
+    summary:
+      - "Designed the chain of interactions that turn users's interaction history into a editable prompt."
+      - "Designed the interfaces that transformed image descriptions into concrete UI/UX."
+      - "Built a full-stack AI system that can generate and edit images with layers control"
+  - title: "TalkTalk XR"
+    description: "TalkTalkXR turns your field of view into an interactive knowledge graph you can explore in space."
+    imageUrl: "/assets/img/talktalkxr.png"
+    tags: ["VR", "Vision", "Micro-gestures", "Prompt Engineering", "Human-AI Collaboration"]
+    githubUrl: "https://github.com/Constannnnnt/TalkTalkXR"
+    summary:
+      - "Built a XR application that captures your field of view and transforms it into an interactive knowledge graph."
+      - "Designed and implemented the micro-gestures that allow users to interact with spatial context."
+  - title: "ZenCode"
+    description: "ZenCode is a learning-first code interface built to teach engineering thinking, It guides developers through an exploration debugging workflow: Map → Contract → Hypothesis → Fix."
+    imageUrl: "/assets/img/zencode.png"
+    tags: ["UI/UX", "Human-AI Collaboration", "LLM", "Coding Tools"]
+    githubUrl: "https://www.kaggle.com/competitions/gemini-3/writeups/new-writeup-1765563952619"
+    summary:
+      - "Designed and vibe-implemented the UI/UX that guides developers through an exploration debugging workflow."
+
+timeline:
+  - date: "2025"
+    startDate: "2025-03"
+    endDate: "2025-08"
+    title: "Research Scientist Intern"
+    subtitle: "Hitachi Energy Canada"
+    type: "work"
+    description: "Researched in LLM and agentic systems."
+  - date: "2024"
+    startDate: "2021-01"
+    endDate: "2024-12"
+    title: "Ph.D. in Computer Science"
+    subtitle: "University of Waterloo & Université de Lille"
+    type: "education"
+    description: "Researched in Pervasive desktop computing and XR."
+  - date: "2020"
+    startDate: "2018-09"
+    endDate: "2020-11"
+    title: "M.Math in Computer Science"
+    subtitle: "University of Waterloo"
+    type: "education"
+    description: "Researched in spatial computing with everyday smart devices."
+  - date: "2020"
+    startDate: "2020-01"
+    endDate: "2020-11"
+    title: "Assistant & Support Engineer"
+    subtitle: "Huawei Canada"
+    type: "work"
+    description: "Researched in mobile VR interaction."
+  - date: "2018"
+    startDate: "2018-06"
+    endDate: "2018-08"
+    title: "Machine Learning Intern"
+    subtitle: "Tencent"
+    type: "work"
+    description: "Researched in object detection."
+  - date: "2018"
+    startDate: "2014-09"
+    endDate: "2018-06"
+    title: "B.Eng. in Computer Science & Mathematics"
+    subtitle: "HKUST"
+    type: "education"
+    description: "Researched in data visualization, and interactions with sensors in XR."
+  - date: "2016"
+    startDate: "2016-06"
+    endDate: "2016-08"
+    title: "Research & Development Intern"
+    subtitle: "ASTRI"
+    type: "work"
+    description: "DevOps: built docker images and containers."
+
+news:
+  - date: "Dec 2025"
+    text: "No news is good news."
+
+blog: []
+
+researchAreas:
+  - id: "people"
+    sentence: "Focusing on improving human capabilities and understanding."
+    animationType: "people"
+  - id: "computer"
+    sentence: "Developing novel interations and interactive systems."
+    animationType: "computer"
+  - id: "environment"
+    sentence: "Improving the physical environment with computational intelligence."
+    animationType: "environment"
+  - id: "interact"
+    sentence: "Designing comfortable interactions and ergonomic interfaces."
+    animationType: "interact"
+  - id: "bridge"
+    sentence: "Merging physical and digital worlds for immersive human experiences."
+    animationType: "bridge"
+  - id: "connect"
+    sentence: "Encouraging human activities in the physical world for social good."
+    animationType: "connect"
+

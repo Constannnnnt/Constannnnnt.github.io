@@ -1,0 +1,196 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Scientific Neo-Brutalism Palette */
+    /* Primary: #ff6666 -> 0 100% 70% */
+    /* Accent: #3399ff -> 210 100% 60% */
+
+    --background: 0 0% 100%;
+    /* Pure White */
+    --foreground: 0 0% 0%;
+    /* Pure Black */
+
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 0%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 0%;
+
+    --primary: 0 100% 70%;
+    /* #ff6666 Light Red */
+    --primary-foreground: 0 0% 0%;
+
+    --secondary: 0 0% 98%;
+    /* Very Light Gray */
+    --secondary-foreground: 0 0% 0%;
+
+    --muted: 0 0% 96%;
+    --muted-foreground: 0 0% 40%;
+
+    --accent: 210 100% 60%;
+    /* #3399ff Azure Blue */
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 0 0% 0%;
+    /* Pure Black Borders */
+    --input: 0 0% 0%;
+    --ring: 0 100% 70%;
+
+    --radius: 0rem;
+    /* Sharp Corners */
+
+    /* Tag Specifics */
+    --tag-bg: 0 0% 98%;
+    --tag-border: 0 0% 0%;
+
+    --sidebar-background: 0 0% 99%;
+    --sidebar-foreground: 0 0% 0%;
+    --sidebar-primary: 0 100% 70%;
+    --sidebar-primary-foreground: 0 0% 0%;
+    --sidebar-accent: 210 100% 60%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 0 0% 90%;
+    --sidebar-ring: 210 100% 60%;
+  }
+
+  .dark {
+    /* Auto-inversion for dark mode preference */
+    --background: 0 0% 5%;
+    --foreground: 0 0% 100%;
+
+    --card: 0 0% 5%;
+    --card-foreground: 0 0% 100%;
+
+    --popover: 0 0% 5%;
+    --popover-foreground: 0 0% 100%;
+
+    --primary: 0 100% 70%;
+    /* Keep Red */
+    --primary-foreground: 0 0% 0%;
+
+    --secondary: 0 0% 15%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 0 0% 15%;
+    --muted-foreground: 0 0% 60%;
+
+    --accent: 210 100% 60%;
+    /* Keep Blue */
+    --accent-foreground: 0 0% 100%;
+
+    --border: 0 0% 20%;
+    --input: 0 0% 20%;
+    --ring: 0 100% 70%;
+
+    --tag-bg: 0 0% 10%;
+    --tag-border: 0 0% 30%;
+
+    --sidebar-background: 0 0% 8%;
+    --sidebar-foreground: 0 0% 100%;
+    --sidebar-primary: 0 100% 70%;
+    --sidebar-primary-foreground: 0 0% 0%;
+    --sidebar-accent: 210 100% 60%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 0 0% 15%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+    font-family: 'Inter', system-ui, sans-serif;
+    line-height: 1.6;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: 'Noto Sans Symbols', sans-serif;
+    letter-spacing: -0.01em;
+    @apply font-bold;
+  }
+}
+
+@layer utilities {
+  .text-highlight {
+    /* Thick Brutalist Underline with Primary Red */
+    @apply text-foreground font-medium border-b-2 border-primary hover:bg-primary hover:text-primary-foreground transition-all decoration-0;
+  }
+
+  .btn-brutal {
+    /* Sharp, Bordered, Invert on Hover to Primary Red */
+    @apply rounded-none border-2 border-foreground bg-background text-foreground px-4 py-2 font-mono text-xs uppercase tracking-wider hover:bg-primary hover:border-primary hover:text-primary-foreground transition-colors duration-200;
+  }
+
+  .tag-brutal {
+    /* Monospace Tag */
+    @apply rounded-none border border-foreground/30 bg-secondary/50 px-2 py-0.5 font-mono text-xs text-secondary-foreground;
+  }
+
+  .font-serif {
+    font-family: 'Playfair Display', serif;
+  }
+
+  .font-mono {
+    font-family: 'JetBrains Mono', 'Fira Code', monospace;
+    /* Ensure a mono stack */
+  }
+
+  /* Hide scrollbar */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
+/* Animations */
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  /* Smoother ease */
+}
+
+.animate-fade-in {
+  animation: fade-in 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
