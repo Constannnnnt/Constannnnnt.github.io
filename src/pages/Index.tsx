@@ -144,7 +144,7 @@ const Index = () => {
                       config.profile.bio.split('\n\n').map((paragraph, i) => (
                         i === 0 ? <p key={i} className="flex items-center gap-2 whitespace-nowrap">
                           <BellRing className="w-6 h-6 shrink-0" />
-                          <span className="truncate">{paragraph}</span>
+                          <span>{paragraph}</span>
                         </p> : <p key={i}>{paragraph}</p>
                       ))
                     ) : (
