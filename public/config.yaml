@@ -7,7 +7,7 @@ profile:
     I am actively looking for full-time opportunities to work in the field of HCI, XR, and VLM.
 
     I design and build systems that enable seamless interaction anytime, anywhere, and study how people behave and interact across different computing environments. My PhD focuses on pervasive desktop computing and context-aware mixed environments using projection mapping, sensing, and vision inputs. 
-    
+
     I also research Human–AI interaction, with an emphasis on how people understand, collaborate with, and benefit from agentic systems, which I both study and build.
 
     Feel free to get in touch if you want to discuss collaboration opportunities.
@@ -32,7 +32,8 @@ publications:
 
   - title: "Understanding Dynamic Peephole Pointing using Coupled and Decoupled Target Acquisition on Single and Multiple Surfaces"
     venue: "AHs 2025"
-    tags: ["spatial interaction", "peephole interaction", "target acquisition", ""]
+    tags:
+      ["spatial interaction", "peephole interaction", "target acquisition", ""]
     authors: "Yuan Chen, Géry Casiez, Sylvain Malacria, and Daniel Vogel"
     highlightAuthor: "Yuan Chen"
     imageUrl: "/assets/img/peephole.jpg"
@@ -47,7 +48,14 @@ publications:
 
   - title: "LuxAR: A Direct Manipulation Projected Display to Extend and Augment Desktop Computing"
     venue: "GI 2024"
-    tags: ["extended reality", "projected display", "spatial interaction", "sensing", "vision"]
+    tags:
+      [
+        "extended reality",
+        "projected display",
+        "spatial interaction",
+        "sensing",
+        "vision",
+      ]
     authors: "Yuan Chen, Géry Casiez, Sylvain Malacria, and Daniel Vogel"
     highlightAuthor: "Yuan Chen"
     imageUrl: "/assets/img/luxar.png"
@@ -58,7 +66,8 @@ publications:
     summary:
       - "Designed a direct manipulation projected display system"
       - "Augmented desktop computing with spatial interaction"
-    categories: ["environment", "connect", "bridge", "computer", "interact","people"]
+    categories:
+      ["environment", "connect", "bridge", "computer", "interact", "people"]
 
   - title: "Exploring the Effects of Intended Use on Targeting in Virtual Reality"
     venue: "GI 2023"
@@ -111,7 +120,8 @@ publications:
     videoUrl: "https://www.youtube.com/watch?v=QQCwILEpABM"
     summary:
       - "Compared viewport- vs world-based pointing in AR"
-    categories: ["computer", "people", "interact", "environment", "connect", "bridge"]
+    categories:
+      ["computer", "people", "interact", "environment", "connect", "bridge"]
 
   - title: "SkyLens: Visual Analysis of Skyline on Multi-Dimensional Data"
     venue: "VIS 2017"
@@ -129,7 +139,14 @@ projects:
   - title: "Penguin Studio"
     description: "Penguin Studio is an image generation and editing platform that combines text-to-image synthesis with automatic object detection and semantic scene configuration."
     imageUrl: "/assets/img/penguin.png"
-    tags: ["Full-stack", "Vision", "Prompt Engineering", "Chain of Interactions","Human-AI Collaboration"]
+    tags:
+      [
+        "Full-stack",
+        "Vision",
+        "Prompt Engineering",
+        "Chain of Interactions",
+        "Human-AI Collaboration",
+      ]
     githubUrl: "https://github.com/Constannnnnt/Penguin-Studio"
     summary:
       - "Designed the chain of interactions that turn users's interaction history into a editable prompt."
@@ -138,11 +155,26 @@ projects:
   - title: "TalkTalk XR"
     description: "TalkTalkXR turns your field of view into an interactive knowledge graph you can explore in space."
     imageUrl: "/assets/img/talktalkxr.png"
-    tags: ["VR", "Vision", "Micro-gestures", "Prompt Engineering", "Human-AI Collaboration"]
+    tags:
+      [
+        "VR",
+        "Vision",
+        "Micro-gestures",
+        "Prompt Engineering",
+        "Human-AI Collaboration",
+      ]
     githubUrl: "https://github.com/Constannnnnt/TalkTalkXR"
     summary:
       - "Built a XR application that captures your field of view and transforms it into an interactive knowledge graph."
       - "Designed and implemented the micro-gestures that allow users to interact with spatial context."
+  - title: "PanoSharp"
+    description: "PanoSharp aligns and merges two 3DGS plys from single-image reconstructions using Apple's SHARP model."
+    imageUrl: "/assets/img/panosharp.png"
+    tags: ["Gaussian Splatting", "Computer Vision", "Computer Graphics"]
+    githubUrl: "https://github.com/Constannnnnt/PanoSharp"
+    summary:
+      - "Aligned and merged two 3DGS plys from single-image reconstructions using Apple's SHARP model."
+      - "Works for real images and AI-generated images"
   - title: "ZenCode"
     description: "ZenCode is a learning-first code interface built to teach engineering thinking, It guides developers through an exploration debugging workflow: Map → Contract → Hypothesis → Fix."
     imageUrl: "/assets/img/zencode.png"
@@ -227,4 +259,3 @@ researchAreas:
   - id: "connect"
     sentence: "Encouraging human activities in the physical world for social good."
     animationType: "connect"
-
