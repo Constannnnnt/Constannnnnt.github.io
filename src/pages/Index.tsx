@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import ReactMarkdown from "react-markdown";
+import rehypeRaw from "rehype-raw";
 import { ProfileSidebar } from "@/components/ProfileSidebar";
 import { NavTabs } from "@/components/NavTabs";
 import { PublicationCard } from "@/components/PublicationCard";
@@ -142,10 +144,10 @@ const Index = () => {
                   <div className="text-lg lg:text-xl text-muted-foreground space-y-4 leading-relaxed">
                     {config.profile.bio ? (
                       config.profile.bio.split('\n\n').map((paragraph, i) => (
-                        i === 0 ? <p key={i} className="flex items-center gap-2 whitespace-nowrap">
+                        i === 0 ? <div key={i} className="flex items-center gap-2 whitespace-nowrap">
                           <BellRing className="w-6 h-6 shrink-0" />
-                          <span>{paragraph}</span>
-                        </p> : <p key={i}>{paragraph}</p>
+                          <div className="inline"><ReactMarkdown rehypePlugins={[rehypeRaw]}>{paragraph}</ReactMarkdown></div>
+                        </div> : <ReactMarkdown key={i} rehypePlugins={[rehypeRaw]}>{paragraph}</ReactMarkdown>
                       ))
                     ) : (
                       <p>Null</p>
