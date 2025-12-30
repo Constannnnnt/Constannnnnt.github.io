@@ -144,8 +144,8 @@ const Index = () => {
                   <div className="text-lg lg:text-xl text-muted-foreground space-y-4 leading-relaxed">
                     {config.profile.bio ? (
                       config.profile.bio.split('\n\n').map((paragraph, i) => (
-                        i === 0 ? <div key={i} className="flex items-center gap-2 whitespace-nowrap">
-                          <BellRing className="w-6 h-6 shrink-0" />
+                        i === 0 ? <div key={i} className="flex items-start gap-3 whitespace-wrap">
+                          <BellRing className="w-6 h-6 shrink-0 mt-1" />
                           <div className="inline"><ReactMarkdown rehypePlugins={[rehypeRaw]}>{paragraph}</ReactMarkdown></div>
                         </div> : <ReactMarkdown key={i} rehypePlugins={[rehypeRaw]}>{paragraph}</ReactMarkdown>
                       ))
