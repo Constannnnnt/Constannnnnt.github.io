@@ -13,6 +13,7 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { useConfig } from "@/hooks/useConfig";
 import { BlogPost } from "@/components/BlogPost";
 import { Card, CardContent } from "@/components/ui/card";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 
 const RESEARCH_AREA_ANIMATIONS: Record<string, React.ReactNode> = {
   people: (
@@ -143,12 +144,70 @@ const Index = () => {
                   </h1>
                   <div className="text-lg lg:text-xl text-muted-foreground space-y-4 leading-relaxed">
                     {config.profile.bio ? (
-                      config.profile.bio.split('\n\n').map((paragraph, i) => (
-                        i === 0 ? <div key={i} className="flex items-start gap-3 whitespace-wrap">
-                          <BellRing className="w-6 h-6 shrink-0 mt-1" />
-                          <div className="inline"><ReactMarkdown rehypePlugins={[rehypeRaw]}>{paragraph}</ReactMarkdown></div>
-                        </div> : <ReactMarkdown key={i} rehypePlugins={[rehypeRaw]}>{paragraph}</ReactMarkdown>
-                      ))
+                      config.profile.bio.split('\n\n').map((paragraph, i) => {
+                        const bioTooltip = config.profile.bioTooltip;
+                        const hasTooltip = bioTooltip && bioTooltip.paragraphIndex === i;
+
+                        // For paragraphs with tooltip, we need to split and highlight the label
+                        if (hasTooltip && bioTooltip.highlightLabel) {
+                          const label = bioTooltip.highlightLabel;
+                          const labelIndex = paragraph.toLowerCase().indexOf(label.toLowerCase());
+
+                          if (labelIndex !== -1) {
+                            const before = paragraph.slice(0, labelIndex);
+                            const match = paragraph.slice(labelIndex, labelIndex + label.length);
+                            const after = paragraph.slice(labelIndex + label.length);
+
+                            return (
+                              <p key={i}>
+                                <ReactMarkdown rehypePlugins={[rehypeRaw]} components={{ p: ({ children }) => <>{children}</> }}>{before}</ReactMarkdown>
+                                <Tooltip>
+                                  <TooltipTrigger asChild>
+                                    <span className="cursor-pointer underline decoration-dotted decoration-primary underline-offset-4 text-foreground font-medium">
+                                      {match}
+                                    </span>
+                                  </TooltipTrigger>
+                                  <TooltipContent side="top" className="max-w-md px-4 py-3">
+                                    <p className="text-base">
+                                      {bioTooltip.text}{" "}
+                                      {bioTooltip.supervisors && bioTooltip.supervisors.length > 0 ? (
+                                        bioTooltip.supervisors.map((supervisor, idx) => (
+                                          <React.Fragment key={idx}>
+                                            <a
+                                              href={supervisor.url}
+                                              target="_blank"
+                                              rel="noopener noreferrer"
+                                              className="text-primary underline font-semibold hover:text-primary/80"
+                                            >
+                                              {supervisor.name}
+                                            </a>
+                                            {idx < bioTooltip.supervisors.length - 1 ? ", " : ""}
+                                          </React.Fragment>
+                                        ))
+                                      ) : (
+                                        ""
+                                      )}
+                                      {" at the University of Waterloo and Université de Lille."}
+                                    </p>
+                                  </TooltipContent>
+                                </Tooltip>
+                                <ReactMarkdown rehypePlugins={[rehypeRaw]} components={{ p: ({ children }) => <>{children}</> }}>{after}</ReactMarkdown>
+                              </p>
+                            );
+                          }
+                        }
+
+                        const content = i === 0 ? (
+                          <div key={i} className="flex items-start gap-3 whitespace-wrap">
+                            <BellRing className="w-6 h-6 shrink-0 mt-1" />
+                            <div className="inline"><ReactMarkdown rehypePlugins={[rehypeRaw]}>{paragraph}</ReactMarkdown></div>
+                          </div>
+                        ) : (
+                          <ReactMarkdown key={i} rehypePlugins={[rehypeRaw]}>{paragraph}</ReactMarkdown>
+                        );
+
+                        return content;
+                      })
                     ) : (
                       <p>Null</p>
                     )}

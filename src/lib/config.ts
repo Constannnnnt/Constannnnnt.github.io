@@ -6,6 +6,15 @@ export interface Profile {
     email: string;
     imageUrl: string;
     bio?: string;
+    bioTooltip?: {
+        paragraphIndex: number;
+        highlightLabel: string;
+        text: string;
+        supervisors: Array<{
+            name: string;
+            url: string;
+        }>;
+    };
     social: {
         github?: string;
         twitter?: string;
