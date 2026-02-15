@@ -166,6 +166,7 @@ projects:
       - "Designed the chain of interactions that turn users's interaction history into a editable prompt."
       - "Designed the interfaces that transformed image descriptions into concrete UI/UX."
       - "Built a full-stack AI system that can generate and edit images with layers control"
+    blogUrl: "/?tab=blogs&slug=penguin-studio"
   - title: "TalkTalk XR"
     description: "TalkTalkXR turns your field of view into an interactive knowledge graph you can explore in space."
     imageUrl: "/assets/img/talktalkxr.png"
@@ -252,7 +253,11 @@ news:
   - date: "Dec 2025"
     text: "No news is good news."
 
-blog: []
+blog:
+  - slug: "penguin-studio"
+    title: "Beyond Prompting: Scene as the Primary Interface"
+    date: "2026-02-15"
+    file: "/content/blog/penguin-studio.md"
 
 researchAreas:
   - id: "people"

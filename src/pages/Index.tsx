@@ -63,6 +63,19 @@ const Index = () => {
   const [openProjectId, setOpenProjectId] = useState<number | null>(null);
   const [selectedBlogSlug, setSelectedBlogSlug] = useState<string | null>(null);
 
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const tab = params.get('tab');
+    const slug = params.get('slug');
+
+    if (tab) {
+      setActiveTab(tab);
+    }
+    if (slug) {
+      setSelectedBlogSlug(slug);
+    }
+  }, []);
+
   if (isLoading) {
     return (
       <div className="flex items-center justify-center min-h-screen bg-background">

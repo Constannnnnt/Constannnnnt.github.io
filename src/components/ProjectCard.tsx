@@ -12,6 +12,7 @@ interface ProjectCardProps {
   githubUrl?: string;
   videoUrl?: string;
   summary?: string[];
+  blogUrl?: string;
   isOpen?: boolean;
   onToggle?: () => void;
 }
@@ -26,6 +27,7 @@ export const ProjectCard = ({
   githubUrl,
   videoUrl,
   summary,
+  blogUrl,
   isOpen: propIsOpen,
   onToggle,
 }: ProjectCardProps) => {
@@ -120,6 +122,11 @@ export const ProjectCard = ({
             {videoUrl && (
               <a href={resolveUrl(videoUrl)} target="_blank" rel="noopener noreferrer" className="text-[10px] font-mono font-bold uppercase tracking-widest hover:text-primary transition-colors">
                 Video
+              </a>
+            )}
+            {blogUrl && (
+              <a href={blogUrl} className="text-[10px] font-mono font-bold uppercase tracking-widest hover:text-primary transition-colors">
+                Blog
               </a>
             )}
 

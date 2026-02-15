@@ -48,6 +48,7 @@ export interface Project {
     githubUrl?: string;
     videoUrl?: string;
     summary?: string[];
+    blogUrl?: string;
 }
 
 export interface TimelineItem {
