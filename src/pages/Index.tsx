@@ -256,7 +256,7 @@ const Index = () => {
         {activeTab === "projects" && (
           <div className="animate-fade-in space-y-8">
             <h2 className="text-xl font-medium tracking-tight text-foreground border-b border-border/20 pb-4">
-              Curated Projects
+              Projects
             </h2>
 
             {/* 3 columns for high density, making use of max-w-7xl */}
