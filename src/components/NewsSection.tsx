@@ -33,8 +33,8 @@ export const NewsSection = ({
   return (
     <div className={cn("w-full pt-8", className)}>
       <Collapsible open={isExpanded} onOpenChange={setIsExpanded}>
-        <div className="flex items-end justify-between mb-6 border-b border-border pb-2">
-            <h3 className="text-sm font-serif tracking-wide text-foreground font-semibold uppercase">
+        <div className="flex items-end justify-between mb-6 border-b border-border/40 pb-2">
+            <h3 className="text-sm font-sans tracking-widest text-muted-foreground font-medium uppercase">
               News
             </h3>
           {hasMoreItems && (
@@ -54,7 +54,7 @@ export const NewsSection = ({
           {visibleItems.map((item, index) => (
             <div key={index} className="group">
               <div className="flex flex-col sm:flex-row sm:gap-6 items-baseline">
-                <span className="text-xs font-mono text-muted-foreground w-20 flex-shrink-0">
+                <span className="text-[11px] tracking-wider font-sans text-muted-foreground/80 w-24 flex-shrink-0">
                   {item.date}
                 </span>
                 <p className="text-base text-foreground/90 font-light leading-relaxed">

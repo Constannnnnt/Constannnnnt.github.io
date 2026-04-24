@@ -1,11 +1,11 @@
 import { MoreHorizontal } from "lucide-react";
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, memo } from "react";
 import { cn, resolveUrl } from "@/lib/utils";
 
 interface ProjectCardProps {
   title: string;
   description: string;
-  tags: string[];
+  tags?: string[];
   imageUrl?: string;
   gifUrl?: string;
   link?: string;
@@ -13,11 +13,12 @@ interface ProjectCardProps {
   videoUrl?: string;
   summary?: string[];
   blogUrl?: string;
+  id?: number;
   isOpen?: boolean;
-  onToggle?: () => void;
+  onToggle?: (id?: number) => void;
 }
 
-export const ProjectCard = ({
+export const ProjectCard = memo(({
   title,
   description,
   tags,
@@ -28,80 +29,39 @@ export const ProjectCard = ({
   videoUrl,
   summary,
   blogUrl,
+  id,
   isOpen: propIsOpen,
   onToggle,
 }: ProjectCardProps) => {
   const [localIsOpen, setLocalIsOpen] = useState(false);
-  const [showAllTags, setShowAllTags] = useState(false);
-  const [isTagsOverflowing, setIsTagsOverflowing] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
-  const tagsRef = useRef<HTMLDivElement>(null);
-
+  
   const isOpen = propIsOpen !== undefined ? propIsOpen : localIsOpen;
-  const toggle = onToggle || (() => setLocalIsOpen(!localIsOpen));
-
-  useEffect(() => {
-    const checkOverflow = () => {
-      if (tagsRef.current) {
-        setIsTagsOverflowing(tagsRef.current.scrollHeight > 32);
-      }
-    };
-    checkOverflow();
-    window.addEventListener('resize', checkOverflow);
-    return () => window.removeEventListener('resize', checkOverflow);
-  }, [tags]);
+  const toggle = () => onToggle ? onToggle(id) : setLocalIsOpen(!localIsOpen);
 
   return (
     <div
-      className="flex flex-col min-h-[500px] bg-card/30 border border-border/50 hover:border-primary/30 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:shadow-primary/5 group animate-fade-in"
+      className="flex flex-col min-h-[500px] bg-transparent border border-border/20 rounded-xl hover:border-border/40 transition-all duration-500 hover:-translate-y-1 hover:shadow-xl hover:shadow-foreground/5 group animate-fade-in"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
       {imageUrl && (
-        <div className="flex-shrink-0 w-full aspect-[16/9] overflow-hidden bg-muted/10 relative">
+        <div className="flex-shrink-0 w-full aspect-[16/9] overflow-hidden bg-muted/5 relative border-b border-border/10 rounded-t-xl">
           <img
             src={resolveUrl(isHovered && gifUrl ? gifUrl : imageUrl)}
             alt={title}
             className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+            loading="lazy"
+            decoding="async"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-background/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
         </div>
       )}
 
       <div className="flex-1 p-6 flex flex-col space-y-4">
-        <div className="space-y-3">
-          <div className="relative flex items-start gap-2 pr-8">
-            <div
-              ref={tagsRef}
-              className={cn(
-                "flex flex-wrap gap-1.5 transition-all duration-300 overflow-hidden",
-                showAllTags ? "max-h-[500px]" : "max-h-[22px]"
-              )}
-            >
-              {tags.map((tag) => (
-                <span key={tag} className="px-1.5 py-0.5 text-[10px] font-mono font-medium tracking-wider uppercase bg-muted/50 text-muted-foreground border border-border/50 rounded-sm">
-                  {tag}
-                </span>
-              ))}
-            </div>
-            {isTagsOverflowing && (
-              <button
-                onClick={(e) => {
-                  e.stopPropagation();
-                  setShowAllTags(!showAllTags);
-                }}
-                className="absolute right-0 top-0 p-0.5 hover:bg-muted rounded transition-colors"
-                title={showAllTags ? "Show less" : "Show more tags"}
-              >
-                <MoreHorizontal className={cn("w-3.5 h-3.5 transition-transform", showAllTags && "rotate-90")} />
-              </button>
-            )}
-          </div>
-
-          <h3 className="text-xl font-serif font-bold leading-tight group-hover:text-primary transition-colors">
-            {title}
-          </h3>
-        </div>
+        <h3 className="text-xl font-sans font-medium leading-tight text-foreground/90 group-hover:text-primary transition-colors duration-300">
+          {title}
+        </h3>
 
         <p className="text-sm text-muted-foreground/90 font-light leading-relaxed flex-1">
           {description}
@@ -141,7 +101,7 @@ export const ProjectCard = ({
           </div>
 
           {isOpen && summary && summary.length > 0 && (
-            <div className="mt-4 animate-fade-in border-l border-primary/20 pl-4 py-1">
+            <div className="mt-4 animate-fade-in border-l border-border/40 pl-4 py-1">
               <ul className="list-none space-y-1.5">
                 {summary.map((point, i) => (
                   <li key={i} className="text-xs font-light text-muted-foreground leading-relaxed">
@@ -155,4 +115,6 @@ export const ProjectCard = ({
       </div>
     </div>
   );
-}
+});
+
+ProjectCard.displayName = "ProjectCard";

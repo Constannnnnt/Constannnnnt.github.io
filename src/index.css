@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -6,100 +6,89 @@
 
 @layer base {
   :root {
-    /* Scientific Neo-Brutalism Palette */
-    /* Primary: #ff6666 -> 0 100% 70% */
-    /* Accent: #3399ff -> 210 100% 60% */
-
+    /* Sophisticated Minimalist Palette (Zinc base with soft sand accent) */
     --background: 0 0% 100%;
-    /* Pure White */
-    --foreground: 0 0% 0%;
-    /* Pure Black */
+    --foreground: 240 10% 15%; /* Zinc 900 */
 
     --card: 0 0% 100%;
-    --card-foreground: 0 0% 0%;
+    --card-foreground: 240 10% 15%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 0%;
+    --popover-foreground: 240 10% 15%;
 
-    --primary: 0 100% 70%;
-    /* #ff6666 Light Red */
-    --primary-foreground: 0 0% 0%;
+    /* Soft warm sand/gold accent for taste */
+    --primary: 35 25% 60%; 
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 0 0% 98%;
-    /* Very Light Gray */
-    --secondary-foreground: 0 0% 0%;
+    --secondary: 240 5% 96%; /* Zinc 100 */
+    --secondary-foreground: 240 10% 15%;
 
-    --muted: 0 0% 96%;
-    --muted-foreground: 0 0% 40%;
+    --muted: 240 5% 96%;
+    --muted-foreground: 240 4% 46%; /* Zinc 500 */
 
-    --accent: 210 100% 60%;
-    /* #3399ff Azure Blue */
+    --accent: 35 25% 60%; /* Warm sand accent */
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 0 0% 0%;
-    /* Pure Black Borders */
-    --input: 0 0% 0%;
-    --ring: 0 100% 70%;
+    --border: 240 6% 90%; /* Zinc 200 */
+    --input: 240 6% 90%;
+    --ring: 240 5% 65%; /* Zinc 400 */
 
-    --radius: 0rem;
-    /* Sharp Corners */
+    --radius: 0.5rem; /* Soft, elegant rounded corners */
 
     /* Tag Specifics */
-    --tag-bg: 0 0% 98%;
-    --tag-border: 0 0% 0%;
+    --tag-bg: 240 5% 96%;
+    --tag-border: 240 6% 90%;
 
-    --sidebar-background: 0 0% 99%;
-    --sidebar-foreground: 0 0% 0%;
-    --sidebar-primary: 0 100% 70%;
-    --sidebar-primary-foreground: 0 0% 0%;
-    --sidebar-accent: 210 100% 60%;
-    --sidebar-accent-foreground: 0 0% 100%;
-    --sidebar-border: 0 0% 90%;
-    --sidebar-ring: 210 100% 60%;
+    --sidebar-background: 0 0% 100%; /* Pure white sidebar for cleanliness */
+    --sidebar-foreground: 240 10% 15%;
+    --sidebar-primary: 35 25% 60%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 5% 96%;
+    --sidebar-accent-foreground: 240 10% 15%;
+    --sidebar-border: 240 6% 90%;
+    --sidebar-ring: 240 5% 65%;
   }
 
   .dark {
-    /* Auto-inversion for dark mode preference */
-    --background: 0 0% 5%;
-    --foreground: 0 0% 100%;
+    /* Elegant Dark Mode (Zinc 950 base) */
+    --background: 240 10% 4%; 
+    --foreground: 0 0% 98%;
 
-    --card: 0 0% 5%;
-    --card-foreground: 0 0% 100%;
+    --card: 240 10% 4%;
+    --card-foreground: 0 0% 98%;
 
-    --popover: 0 0% 5%;
-    --popover-foreground: 0 0% 100%;
+    --popover: 240 10% 4%;
+    --popover-foreground: 0 0% 98%;
 
-    --primary: 0 100% 70%;
-    /* Keep Red */
-    --primary-foreground: 0 0% 0%;
+    --primary: 35 25% 60%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 0 0% 15%;
-    --secondary-foreground: 0 0% 100%;
+    --secondary: 240 4% 16%; /* Zinc 800 */
+    --secondary-foreground: 0 0% 98%;
 
-    --muted: 0 0% 15%;
-    --muted-foreground: 0 0% 60%;
+    --muted: 240 4% 16%;
+    --muted-foreground: 240 5% 65%; /* Zinc 400 */
 
-    --accent: 210 100% 60%;
-    /* Keep Blue */
+    --accent: 35 25% 60%;
     --accent-foreground: 0 0% 100%;
 
-    --border: 0 0% 20%;
-    --input: 0 0% 20%;
-    --ring: 0 100% 70%;
+    --border: 240 4% 16%;
+    --input: 240 4% 16%;
+    --ring: 240 4% 16%;
 
-    --tag-bg: 0 0% 10%;
-    --tag-border: 0 0% 30%;
+    --tag-bg: 240 4% 10%; /* Zinc 900 */
+    --tag-border: 240 4% 16%;
 
-    --sidebar-background: 0 0% 8%;
-    --sidebar-foreground: 0 0% 100%;
-    --sidebar-primary: 0 100% 70%;
-    --sidebar-primary-foreground: 0 0% 0%;
-    --sidebar-accent: 210 100% 60%;
-    --sidebar-accent-foreground: 0 0% 100%;
-    --sidebar-border: 0 0% 15%;
+    --sidebar-background: 240 10% 4%;
+    --sidebar-foreground: 0 0% 98%;
+    --sidebar-primary: 35 25% 60%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 4% 16%;
+    --sidebar-accent-foreground: 0 0% 98%;
+    --sidebar-border: 240 4% 16%;
   }
 }
 
@@ -112,7 +101,7 @@
     @apply bg-background text-foreground;
     font-feature-settings: "rlig" 1, "calt" 1;
     font-family: 'Inter', system-ui, sans-serif;
-    line-height: 1.6;
+    line-height: 1.7; /* Slightly looser line-height for elegance */
   }
 
   h1,
@@ -121,40 +110,40 @@
   h4,
   h5,
   h6 {
-    font-family: 'Noto Sans Symbols', sans-serif;
-    letter-spacing: -0.01em;
-    @apply font-bold;
+    /* Pure clean typography for headings */
+    font-family: inherit;
+    letter-spacing: -0.02em;
+    @apply font-medium text-foreground/90;
   }
 
   u {
-    @apply text-foreground font-medium border-b-2 border-primary no-underline hover:bg-primary hover:text-primary-foreground transition-all;
+    @apply text-foreground font-medium border-b border-primary/30 no-underline hover:border-primary hover:text-primary transition-all duration-300;
   }
 }
 
-
 @layer utilities {
   .text-highlight {
-    /* Thick Brutalist Underline with Primary Red */
-    @apply text-foreground font-medium border-b-2 border-primary hover:bg-primary hover:text-primary-foreground transition-all decoration-0;
+    /* Elegant underline instead of brutalist highlight */
+    @apply text-foreground font-medium border-b border-primary/40 hover:border-primary hover:text-primary transition-all duration-300 decoration-0;
   }
 
   .btn-brutal {
-    /* Sharp, Bordered, Invert on Hover to Primary Red */
-    @apply rounded-none border-2 border-foreground bg-background text-foreground px-4 py-2 font-mono text-xs uppercase tracking-wider hover:bg-primary hover:border-primary hover:text-primary-foreground transition-colors duration-200;
+    /* Keeping class name but making it soft and elegant */
+    @apply rounded-md border border-border/50 bg-background text-foreground/80 px-4 py-2 font-sans text-sm font-medium tracking-wide hover:bg-muted hover:text-foreground hover:border-border transition-all duration-300 shadow-sm hover:shadow;
   }
 
   .tag-brutal {
-    /* Monospace Tag */
-    @apply rounded-none border border-foreground/30 bg-secondary/50 px-2 py-0.5 font-mono text-xs text-secondary-foreground;
+    /* Keeping class name but making it a soft pill */
+    @apply rounded-full border border-border/40 bg-secondary/30 px-2.5 py-0.5 font-sans text-[11px] font-medium text-muted-foreground transition-colors hover:bg-secondary/60 hover:text-foreground;
   }
 
   .font-serif {
-    font-family: 'Playfair Display', serif;
+    /* Mapped to sans to eliminate serif entirely without breaking classes */
+    font-family: inherit;
   }
 
   .font-mono {
     font-family: 'JetBrains Mono', 'Fira Code', monospace;
-    /* Ensure a mono stack */
   }
 
   /* Hide scrollbar */
@@ -172,9 +161,8 @@
 @keyframes fade-in-up {
   from {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(12px);
   }
-
   to {
     opacity: 1;
     transform: translateY(0);
@@ -185,17 +173,15 @@
   from {
     opacity: 0;
   }
-
   to {
     opacity: 1;
   }
 }
 
 .animate-fade-in-up {
-  animation: fade-in-up 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-  /* Smoother ease */
+  animation: fade-in-up 0.7s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
 }
 
 .animate-fade-in {
-  animation: fade-in 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation: fade-in 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
 }

@@ -167,21 +167,21 @@ projects:
       - "Designed the interfaces that transformed image descriptions into concrete UI/UX."
       - "Built a full-stack AI system that can generate and edit images with layers control"
     blogUrl: "/?tab=blogs&slug=penguin-studio"
-  - title: "TalkTalk XR"
-    description: "TalkTalkXR turns your field of view into an interactive knowledge graph you can explore in space."
-    imageUrl: "/assets/img/talktalkxr.png"
-    tags:
-      [
-        "VR",
-        "Vision",
-        "Micro-gestures",
-        "Prompt Engineering",
-        "Human-AI Collaboration",
-      ]
-    githubUrl: "https://github.com/Constannnnnt/TalkTalkXR"
-    summary:
-      - "Built a XR application that captures your field of view and transforms it into an interactive knowledge graph."
-      - "Designed and implemented the micro-gestures that allow users to interact with spatial context."
+  # - title: "TalkTalk XR"
+  #   description: "TalkTalkXR turns your field of view into an interactive knowledge graph you can explore in space."
+  #   imageUrl: "/assets/img/talktalkxr.png"
+  #   tags:
+  #     [
+  #       "VR",
+  #       "Vision",
+  #       "Micro-gestures",
+  #       "Prompt Engineering",
+  #       "Human-AI Collaboration",
+  #     ]
+  #   githubUrl: "https://github.com/Constannnnnt/TalkTalkXR"
+  #   summary:
+  #     - "Built a XR application that captures your field of view and transforms it into an interactive knowledge graph."
+  #     - "Designed and implemented the micro-gestures that allow users to interact with spatial context."
   - title: "PanoSharp"
     description: "PanoSharp aligns and merges two 3DGS plys from single-image reconstructions using Apple's SHARP model."
     imageUrl: "/assets/img/panosharp.png"
@@ -190,13 +190,13 @@ projects:
     summary:
       - "Aligned and merged two 3DGS plys from single-image reconstructions using Apple's SHARP model."
       - "Works for real images and AI-generated images"
-  - title: "ZenCode"
-    description: "ZenCode is a learning-first code interface built to teach engineering thinking, It guides developers through an exploration debugging workflow: Map → Contract → Hypothesis → Fix."
-    imageUrl: "/assets/img/zencode.png"
-    tags: ["UI/UX", "Human-AI Collaboration", "LLM", "Coding Tools"]
-    githubUrl: "https://www.kaggle.com/competitions/gemini-3/writeups/new-writeup-1765563952619"
-    summary:
-      - "Designed and vibe-implemented the UI/UX that guides developers through an exploration debugging workflow."
+  # - title: "ZenCode"
+  #   description: "ZenCode is a learning-first code interface built to teach engineering thinking, It guides developers through an exploration debugging workflow: Map → Contract → Hypothesis → Fix."
+  #   imageUrl: "/assets/img/zencode.png"
+  #   tags: ["UI/UX", "Human-AI Collaboration", "LLM", "Coding Tools"]
+  #   githubUrl: "https://www.kaggle.com/competitions/gemini-3/writeups/new-writeup-1765563952619"
+  #   summary:
+  #     - "Designed and vibe-implemented the UI/UX that guides developers through an exploration debugging workflow."
 
 timeline:
   - date: "2025"

@@ -1,59 +1,19 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo, useCallback } from "react";
 import ReactMarkdown from "react-markdown";
 import rehypeRaw from "rehype-raw";
-import { ProfileSidebar } from "@/components/ProfileSidebar";
 import { NavTabs } from "@/components/NavTabs";
 import { PublicationCard } from "@/components/PublicationCard";
 import { ProjectCard } from "@/components/ProjectCard";
-import { VennDiagram } from "@/components/VennDiagram";
-import { Menu, ArrowLeft, BellRing } from "lucide-react";
-import { cn } from "@/lib/utils";
+import { ArrowLeft, BellRing, Mail, Github, Twitter, Linkedin, GraduationCap, Menu } from "lucide-react";
+import { cn, resolveUrl } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { useConfig } from "@/hooks/useConfig";
 import { BlogPost } from "@/components/BlogPost";
 import { Card, CardContent } from "@/components/ui/card";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
-
-const RESEARCH_AREA_ANIMATIONS: Record<string, React.ReactNode> = {
-  people: (
-    <svg viewBox="0 0 100 100" className="w-full h-full">
-      <circle cx="50" cy="40" r="15" fill="none" stroke="currentColor" strokeWidth="2" className="animate-pulse" />
-      <path d="M20 90 Q 50 60 80 90" fill="none" stroke="currentColor" strokeWidth="2" />
-    </svg>
-  ),
-  computer: (
-    <svg viewBox="0 0 100 100" className="w-full h-full">
-      <rect x="20" y="20" width="60" height="45" rx="2" fill="none" stroke="currentColor" strokeWidth="2" />
-      <path d="M30 75 L70 75 M50 65 L50 75" fill="none" stroke="currentColor" strokeWidth="2" />
-      <text x="50" y="47" textAnchor="middle" className="text-[10px] animate-pulse font-mono">01</text>
-    </svg>
-  ),
-  environment: (
-    <svg viewBox="0 0 100 100" className="w-full h-full">
-      <path d="M10 80 L90 80 M30 80 L30 40 M70 80 L70 50" fill="none" stroke="currentColor" strokeWidth="2" />
-      <circle cx="50" cy="25" r="8" fill="none" stroke="currentColor" strokeWidth="2" className="animate-bounce" />
-    </svg>
-  ),
-  interact: (
-    <svg viewBox="0 0 100 100" className="w-full h-full">
-      <path d="M30 50 A 20 20 0 1 1 70 50 A 20 20 0 1 1 30 50" fill="none" stroke="currentColor" strokeWidth="2" className="animate-spin-slow origin-center" />
-      <rect x="45" y="45" width="10" height="10" rx="1" fill="none" stroke="currentColor" strokeWidth="2" />
-    </svg>
-  ),
-  connect: (
-    <svg viewBox="0 0 100 100" className="w-full h-full">
-      <path d="M20 50 Q 50 15 80 50 Q 50 85 20 50" fill="none" stroke="currentColor" strokeWidth="2" />
-      <circle cx="50" cy="50" r="10" fill="none" stroke="currentColor" strokeWidth="2" className="animate-ping" />
-    </svg>
-  ),
-  bridge: (
-    <svg viewBox="0 0 100 100" className="w-full h-full">
-      <path d="M15 15 L35 15 L35 35 L15 35 Z M65 65 L85 65 L85 85 L65 85 Z" fill="none" stroke="currentColor" strokeWidth="2" />
-      <line x1="35" y1="35" x2="65" y2="65" stroke="currentColor" strokeWidth="2" strokeDasharray="3 3" className="animate-pulse" />
-    </svg>
-  )
-};
+import { ThemeToggle } from "@/components/ThemeToggle";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 
 const Index = () => {
   const { data: config, isLoading, error } = useConfig();
@@ -76,6 +36,91 @@ const Index = () => {
     }
   }, []);
 
+  const publications = config?.publications || [];
+  const projects = config?.projects || [];
+  const blogs = config?.blog || [];
+
+  const filteredPublications = useMemo(() => {
+    return activeFilter
+      ? publications.filter((pub: any) => pub.categories?.includes(activeFilter))
+      : publications;
+  }, [publications, activeFilter]);
+
+  const handleTogglePublication = useCallback((id?: number) => {
+    if (id !== undefined) setOpenPublicationId(prev => prev === id ? null : id);
+  }, []);
+
+  const handleToggleProject = useCallback((id?: number) => {
+    if (id !== undefined) setOpenProjectId(prev => prev === id ? null : id);
+  }, []);
+
+  const renderedBio = useMemo(() => {
+    if (!config?.profile?.bio) return <p>Null</p>;
+    return config.profile.bio.split('\n\n').map((paragraph: string, i: number) => {
+      const bioTooltip = config.profile.bioTooltip;
+      const hasTooltip = bioTooltip && bioTooltip.paragraphIndex === i;
+
+      if (hasTooltip && bioTooltip.highlightLabel) {
+        const label = bioTooltip.highlightLabel;
+        const labelIndex = paragraph.toLowerCase().indexOf(label.toLowerCase());
+
+        if (labelIndex !== -1) {
+          const before = paragraph.slice(0, labelIndex);
+          const match = paragraph.slice(labelIndex, labelIndex + label.length);
+          const after = paragraph.slice(labelIndex + label.length);
+
+          return (
+            <div key={i}>
+              <ReactMarkdown rehypePlugins={[rehypeRaw]} components={{ p: ({ children }) => <>{children}</> }}>{before}</ReactMarkdown>
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <span className="cursor-pointer underline decoration-dotted decoration-primary/50 underline-offset-4 text-foreground hover:text-primary transition-colors font-normal">
+                    {match}
+                  </span>
+                </TooltipTrigger>
+                <TooltipContent side="top" className="max-w-md px-4 py-3">
+                  <p className="text-sm font-light">
+                    {bioTooltip.text}{" "}
+                    {bioTooltip.supervisors && bioTooltip.supervisors.length > 0 ? (
+                      bioTooltip.supervisors.map((supervisor: any, idx: number) => (
+                        <React.Fragment key={idx}>
+                          <a href={supervisor.url} target="_blank" rel="noopener noreferrer" className="text-primary underline hover:text-primary/80 transition-colors">
+                            {supervisor.name}
+                          </a>
+                          {idx < bioTooltip.supervisors.length - 1 ? ", " : ""}
+                        </React.Fragment>
+                      ))
+                    ) : (
+                      ""
+                    )}
+                    {" at the University of Waterloo and Université de Lille."}
+                  </p>
+                </TooltipContent>
+              </Tooltip>
+              <ReactMarkdown rehypePlugins={[rehypeRaw]} components={{ p: ({ children }) => <>{children}</> }}>{after}</ReactMarkdown>
+            </div>
+          );
+        }
+      }
+
+      return i === 0 ? (
+        <div key={i} className="flex items-start gap-4">
+          <BellRing className="w-5 h-5 shrink-0 mt-0.5 text-muted-foreground/60" />
+          <div className="inline"><ReactMarkdown rehypePlugins={[rehypeRaw]}>{paragraph}</ReactMarkdown></div>
+        </div>
+      ) : (
+        <ReactMarkdown key={i} rehypePlugins={[rehypeRaw]}>{paragraph}</ReactMarkdown>
+      );
+    });
+  }, [config?.profile?.bio, config?.profile?.bioTooltip]);
+
+  const handleTabChange = (tab: string) => {
+    setActiveTab(tab);
+    if (tab !== "blog") {
+      setSelectedBlogSlug(null);
+    }
+  };
+
   if (isLoading) {
     return (
       <div className="flex items-center justify-center min-h-screen bg-background">
@@ -92,293 +137,194 @@ const Index = () => {
     );
   }
 
-  const publications = config.publications || [];
-  const projects = config.projects || [];
-  const blogs = config.blog || [];
-  const researchAreas = config.researchAreas || [];
-
-  const filteredPublications = activeFilter
-    ? publications.filter((pub) => pub.categories?.includes(activeFilter))
-    : publications;
-
-  const handleTabChange = (tab: string) => {
-    setActiveTab(tab);
-    if (tab !== "blog") {
-      setSelectedBlogSlug(null);
-    }
-  };
-
-  const researchArea = researchAreas.find(area => area.id === activeFilter);
-  const currentAreaInfo = researchArea ? {
-    sentence: researchArea.sentence,
-    animation: RESEARCH_AREA_ANIMATIONS[researchArea.animationType]
-  } : null;
+  const { name, title, imageUrl, email, social } = config.profile;
 
   return (
-    <div className="min-h-screen bg-background flex flex-col lg:flex-row">
-      <div className="lg:hidden p-4 border-b border-sidebar-border bg-sidebar-background flex justify-between items-center fixed top-0 left-0 right-0 z-50">
-        <span className="font-serif font-bold text-lg">{config.profile.name}</span>
-        <Sheet>
-          <SheetTrigger asChild>
-            <Button variant="ghost" size="icon">
-              <Menu className="w-6 h-6" />
-            </Button>
-          </SheetTrigger>
-          <SheetContent side="left" className="p-0 w-96">
-            <ProfileSidebar
-              profile={config.profile}
-              timeline={config.timeline}
-              news={config.news}
-            />
-          </SheetContent>
-        </Sheet>
-      </div>
+    <div className="min-h-screen bg-background text-foreground font-sans selection:bg-primary/20">
 
-      <div className="hidden lg:block w-96 fixed inset-y-0 z-50">
-        <ProfileSidebar
-          profile={config.profile}
-          timeline={config.timeline}
-          news={config.news}
-        />
-      </div>
+      {/* GLOBAL TOP NAVIGATION */}
+      <header className="fixed top-0 left-0 right-0 h-16 bg-background/80 backdrop-blur-md border-b border-border/20 z-50 flex items-center justify-between px-6 lg:px-12">
+        <div className="font-sans font-medium tracking-tight text-lg">{name}</div>
 
-      <main className="lg:ml-96 min-h-screen pt-16 lg:pt-0 flex-1">
-        <div className="max-w-[1400px] mx-auto px-6 lg:px-12 py-6 lg:pt-6 lg:pb-20">
-          <div className="hidden lg:flex justify-end mb-16">
-            <NavTabs activeTab={activeTab} onTabChange={handleTabChange} />
-          </div>
+        {/* Desktop Nav */}
+        <div className="hidden md:flex items-center gap-6">
+          <NavTabs activeTab={activeTab} onTabChange={handleTabChange} />
+          <div className="w-[1px] h-4 bg-border/40 mx-2" />
+          <ThemeToggle />
+        </div>
 
-          {activeTab === "about" && (
-            <div className="animate-fade-in space-y-16">
-              <div className="grid lg:grid-cols-12 gap-12 items-start">
-                <div className={cn("space-y-6", activeFilter ? "lg:col-span-8" : "lg:col-span-8")}>
-                  <h1 className="text-4xl lg:text-5xl font-serif font-bold text-foreground leading-tight">
-                    你好.
+        {/* Mobile Nav */}
+        <div className="md:hidden flex items-center gap-4">
+          <ThemeToggle />
+          <Sheet>
+            <SheetTrigger asChild>
+              <Button variant="ghost" size="icon">
+                <Menu className="w-5 h-5" />
+              </Button>
+            </SheetTrigger>
+            <SheetContent side="top" className="p-6">
+              <div className="flex flex-col gap-6 mt-8">
+                <NavTabs activeTab={activeTab} onTabChange={(tab) => {
+                  handleTabChange(tab);
+                  // Close sheet logic typically goes here if controlled
+                }} />
+              </div>
+            </SheetContent>
+          </Sheet>
+        </div>
+      </header>
+
+      <main className="max-w-5xl mx-auto px-6 lg:px-12 pt-28 pb-32 animate-fade-in">
+
+        {/* ABOUT & RESEARCH TAB */}
+        {activeTab === "about" && (
+          <div className="animate-fade-in space-y-20">
+
+            {/* HERO: Avatar + Bio */}
+            <section className="flex flex-col gap-10">
+              <div className="flex flex-col sm:flex-row sm:items-center gap-6">
+                <Avatar className="w-24 h-24 sm:w-28 sm:h-28 relative shadow-sm border border-border/20 shrink-0">
+                  <AvatarImage src={resolveUrl(imageUrl)} alt={name} className="object-cover" />
+                  <AvatarFallback className="bg-muted text-muted-foreground font-sans text-3xl">{name.split(' ').map((n: string) => n[0]).join('')}</AvatarFallback>
+                </Avatar>
+                <div className="flex flex-col justify-center space-y-3 pt-2">
+                  <h1 className="text-3xl sm:text-4xl font-semibold tracking-tight text-foreground">
+                    {name}
                   </h1>
-                  <div className="text-lg lg:text-xl text-muted-foreground space-y-4 leading-relaxed">
-                    {config.profile.bio ? (
-                      config.profile.bio.split('\n\n').map((paragraph, i) => {
-                        const bioTooltip = config.profile.bioTooltip;
-                        const hasTooltip = bioTooltip && bioTooltip.paragraphIndex === i;
-
-                        // For paragraphs with tooltip, we need to split and highlight the label
-                        if (hasTooltip && bioTooltip.highlightLabel) {
-                          const label = bioTooltip.highlightLabel;
-                          const labelIndex = paragraph.toLowerCase().indexOf(label.toLowerCase());
-
-                          if (labelIndex !== -1) {
-                            const before = paragraph.slice(0, labelIndex);
-                            const match = paragraph.slice(labelIndex, labelIndex + label.length);
-                            const after = paragraph.slice(labelIndex + label.length);
-
-                            return (
-                              <p key={i}>
-                                <ReactMarkdown rehypePlugins={[rehypeRaw]} components={{ p: ({ children }) => <>{children}</> }}>{before}</ReactMarkdown>
-                                <Tooltip>
-                                  <TooltipTrigger asChild>
-                                    <span className="cursor-pointer underline decoration-dotted decoration-primary underline-offset-4 text-foreground font-medium">
-                                      {match}
-                                    </span>
-                                  </TooltipTrigger>
-                                  <TooltipContent side="top" className="max-w-md px-4 py-3">
-                                    <p className="text-base">
-                                      {bioTooltip.text}{" "}
-                                      {bioTooltip.supervisors && bioTooltip.supervisors.length > 0 ? (
-                                        bioTooltip.supervisors.map((supervisor, idx) => (
-                                          <React.Fragment key={idx}>
-                                            <a
-                                              href={supervisor.url}
-                                              target="_blank"
-                                              rel="noopener noreferrer"
-                                              className="text-primary underline font-semibold hover:text-primary/80"
-                                            >
-                                              {supervisor.name}
-                                            </a>
-                                            {idx < bioTooltip.supervisors.length - 1 ? ", " : ""}
-                                          </React.Fragment>
-                                        ))
-                                      ) : (
-                                        ""
-                                      )}
-                                      {" at the University of Waterloo and Université de Lille."}
-                                    </p>
-                                  </TooltipContent>
-                                </Tooltip>
-                                <ReactMarkdown rehypePlugins={[rehypeRaw]} components={{ p: ({ children }) => <>{children}</> }}>{after}</ReactMarkdown>
-                              </p>
-                            );
-                          }
-                        }
-
-                        const content = i === 0 ? (
-                          <div key={i} className="flex items-start gap-3 whitespace-wrap">
-                            <BellRing className="w-6 h-6 shrink-0 mt-1" />
-                            <div className="inline"><ReactMarkdown rehypePlugins={[rehypeRaw]}>{paragraph}</ReactMarkdown></div>
-                          </div>
-                        ) : (
-                          <ReactMarkdown key={i} rehypePlugins={[rehypeRaw]}>{paragraph}</ReactMarkdown>
-                        );
-
-                        return content;
-                      })
-                    ) : (
-                      <p>Null</p>
+                  <p className="text-base sm:text-lg text-muted-foreground font-light leading-relaxed">
+                    {title}
+                  </p>
+                  <div className="flex flex-wrap items-center gap-2 pt-2">
+                    <a href={`mailto:${email}`} aria-label="Email" className="flex items-center gap-1.5 px-3 py-1.5 rounded-md border border-border/50 bg-muted/20 hover:border-primary/40 hover:bg-primary/5 text-xs font-medium transition-all text-muted-foreground hover:text-foreground">
+                      <Mail className="w-3.5 h-3.5" /> <span>Email</span>
+                    </a>
+                    {social.github && (
+                      <a href={social.github} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 px-3 py-1.5 rounded-md border border-border/50 bg-muted/20 hover:border-primary/40 hover:bg-primary/5 text-xs font-medium transition-all text-muted-foreground hover:text-foreground">
+                        <Github className="w-3.5 h-3.5" /> <span>GitHub</span>
+                      </a>
+                    )}
+                    {social.twitter && (
+                      <a href={social.twitter} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 px-3 py-1.5 rounded-md border border-border/50 bg-muted/20 hover:border-primary/40 hover:bg-primary/5 text-xs font-medium transition-all text-muted-foreground hover:text-foreground">
+                        <Twitter className="w-3.5 h-3.5" /> <span>Twitter</span>
+                      </a>
+                    )}
+                    {social.linkedin && (
+                      <a href={social.linkedin} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 px-3 py-1.5 rounded-md border border-border/50 bg-muted/20 hover:border-primary/40 hover:bg-primary/5 text-xs font-medium transition-all text-muted-foreground hover:text-foreground">
+                        <Linkedin className="w-3.5 h-3.5" /> <span>LinkedIn</span>
+                      </a>
+                    )}
+                    {social.googleScholar && (
+                      <a href={social.googleScholar} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 px-3 py-1.5 rounded-md border border-border/50 bg-muted/20 hover:border-primary/40 hover:bg-primary/5 text-xs font-medium transition-all text-muted-foreground hover:text-foreground">
+                        <GraduationCap className="w-3.5 h-3.5" /> <span>Scholar</span>
+                      </a>
                     )}
                   </div>
                 </div>
-
-                {activeFilter && currentAreaInfo && (
-                  <div className="lg:col-span-4 h-full min-h-[200px] flex items-center justify-center p-8 bg-muted/10 border-none relative overflow-hidden group animate-fade-in">
-                    <div key={activeFilter} className="space-y-6 text-center">
-                      <div className="w-24 h-24 mx-auto text-primary">
-                        {currentAreaInfo.animation}
-                      </div>
-                      <p className="text-sm font-mono text-foreground leading-tight tracking-tight px-4">
-                        {currentAreaInfo.sentence}
-                      </p>
-                    </div>
-
-                  </div>
-                )}
               </div>
 
-              {/* Research Section - Dashboard Grid Layout */}
-              <section className="space-y-8">
-                <div className="flex items-center gap-6">
-                  <h2 className="text-2xl font-serif text-foreground shrink-0">Research</h2>
-                  <div className="h-[1px] bg-border w-full opacity-60" />
-                </div>
+              <div className="text-base text-foreground/80 space-y-4 leading-relaxed font-light">
+                <h2 className="text-2xl font-light text-foreground mb-6">你好.</h2>
+                {renderedBio}
+              </div>
+            </section>
 
-                <div className="grid lg:grid-cols-12 gap-12 items-start">
-                  {/* Left Sticky Panel: Diagram & Context */}
-                  <div className="lg:col-span-5 lg:sticky lg:top-24 space-y-8 mb-12 lg:mb-0">
-                    <div className="bg-card/30 p-4 lg:p-6 backdrop-blur-sm">
-                      <VennDiagram
-                        activeFilter={activeFilter}
-                        onFilterChange={setActiveFilter}
-                      />
-                      <p className="text-center text-xs text-muted-foreground mt-4 font-light italic">
-                        Interactive: Click to filter projects
-                      </p>
-                    </div>
+            {/* PUBLICATIONS GRID */}
+            <section className="space-y-8 border-t border-border/20 pt-4">
+              <div className="flex justify-between items-end mb-6">
+                <h2 className="text-2xl font-medium tracking-tight text-foreground">
+                  Publications
+                </h2>
+              </div>
 
-                    {/* <div className="text-sm text-muted-foreground space-y-2 font-light pl-2 border-l-2 border-border/50">
-                      <p>Published in top-tier HCI venues:</p>
-                      <ul className="space-y-1">
-                        <li><strong className="font-medium text-foreground">CHI</strong> (human factors)</li>
-                        <li><strong className="font-medium text-foreground">UIST</strong> (interfaces)</li>
-                        <li><strong className="font-medium text-foreground">IMWUT</strong> (mobile/wearable)</li>
-                      </ul>
-                    </div> */}
-                  </div>
+              {/* High density single column for publications */}
+              <div className="flex flex-col space-y-8">
+                {filteredPublications.map((pub, index) => (
+                  <PublicationCard
+                    key={index}
+                    {...pub}
+                    id={index}
+                    isOpen={openPublicationId === index}
+                    onToggle={handleTogglePublication}
+                  />
+                ))}
+              </div>
+            </section>
+          </div>
+        )}
 
-                  {/* Right Panel: Publications List */}
-                  <div className="lg:col-span-7 space-y-12">
-                    <div className="flex justify-between items-center mb-4">
-                      <span className="text-sm tracking-widest uppercase text-muted-foreground">
-                        {activeFilter ? `${activeFilter} Projects` : "All Publications"}
-                      </span>
-                      {activeFilter && (
-                        <button onClick={() => setActiveFilter(null)} className="text-xs text-primary hover:underline">
-                          Clear Filter
-                        </button>
-                      )}
-                    </div>
+        {/* PROJECTS TAB */}
+        {activeTab === "projects" && (
+          <div className="animate-fade-in space-y-8">
+            <h2 className="text-xl font-medium tracking-tight text-foreground border-b border-border/20 pb-4">
+              Curated Projects
+            </h2>
 
-                    {filteredPublications.map((pub, index) => (
-                      <PublicationCard
-                        key={index}
-                        {...pub}
-                        isOpen={openPublicationId === index}
-                        onToggle={() => setOpenPublicationId(openPublicationId === index ? null : index)}
-                      />
-                    ))}
-                  </div>
-                </div>
-              </section>
+            {/* 3 columns for high density, making use of max-w-7xl */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">
+              {projects.length === 0 ? (
+                <p className="text-muted-foreground italic col-span-full">No projects listed yet.</p>
+              ) : (
+                projects.map((project, index) => (
+                  <ProjectCard
+                    key={index}
+                    {...project}
+                    id={index}
+                    isOpen={openProjectId === index}
+                    onToggle={handleToggleProject}
+                  />
+                ))
+              )}
             </div>
-          )}
+          </div>
+        )}
 
+        {/* BLOGS TAB */}
+        {activeTab === "blogs" && (
+          <div className="animate-fade-in space-y-8">
+            <div className="flex items-center gap-4 border-b border-border/20 pb-4">
+              {selectedBlogSlug && (
+                <Button variant="ghost" size="icon" onClick={() => setSelectedBlogSlug(null)} className="shrink-0 rounded-full hover:bg-muted/50 -ml-2 h-8 w-8">
+                  <ArrowLeft className="h-4 w-4 text-muted-foreground" />
+                </Button>
+              )}
+              <h2 className="text-xl font-medium tracking-tight text-foreground">
+                {selectedBlogSlug ? "Reading" : "Writing"}
+              </h2>
+            </div>
 
-          {/* Projects Tab */}
-          {activeTab === "projects" && (
-            <div className="animate-fade-in space-y-12">
-              <div className="flex flex-col gap-2 mb-8">
-                <h2 className="text-3xl font-serif font-bold text-foreground">Projects</h2>
-                <div className="w-12 h-1 bg-primary" />
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8 items-start">
-                {projects.length === 0 ? (
-                  <p className="text-muted-foreground italic col-span-full">No projects listed yet.</p>
+            {!selectedBlogSlug ? (
+              <div className="grid gap-4 max-w-4xl">
+                {blogs.length === 0 ? (
+                  <p className="text-muted-foreground text-sm font-light">
+                    Writing coming soon.
+                  </p>
                 ) : (
-                  projects.map((project, index) => (
-                    <ProjectCard
-                      key={index}
-                      {...project}
-                      isOpen={openProjectId === index}
-                      onToggle={() => setOpenProjectId(openProjectId === index ? null : index)}
-                    />
+                  blogs.map((blog) => (
+                    <div
+                      key={blog.slug}
+                      className="cursor-pointer group flex flex-col sm:flex-row sm:items-baseline gap-2 sm:gap-6 border border-border/10 bg-muted/5 rounded-lg p-5 hover:border-primary/30 transition-all duration-300"
+                      onClick={() => setSelectedBlogSlug(blog.slug)}
+                    >
+                      <time className="text-[10px] tracking-widest uppercase text-muted-foreground/60 w-24 shrink-0">{blog.date}</time>
+                      <h3 className="text-lg font-medium text-foreground/90 group-hover:text-primary transition-colors">
+                        {blog.title}
+                      </h3>
+                    </div>
                   ))
                 )}
               </div>
-            </div>
-          )}
-
-          {/* Blogs Tab */}
-          {activeTab === "blogs" && (
-            <div className="animate-fade-in">
-              <div className="flex items-center gap-4 mb-8">
-                {selectedBlogSlug && (
-                  <Button variant="ghost" size="icon" onClick={() => setSelectedBlogSlug(null)} className="shrink-0">
-                    <ArrowLeft className="h-6 w-6" />
-                  </Button>
-                )}
-                <div>
-                  <h2 className="text-3xl font-bold text-foreground mb-2">Blogs</h2>
-                  <div className="w-12 h-1 bg-primary" />
-                </div>
+            ) : (
+              <div className="max-w-3xl mx-auto">
+                {(() => {
+                  const selectedBlog = blogs.find(b => b.slug === selectedBlogSlug);
+                  if (!selectedBlog) return <div>Writing not found</div>;
+                  return <BlogPost path={selectedBlog.file} />;
+                })()}
               </div>
+            )}
+          </div>
+        )}
 
-              {!selectedBlogSlug ? (
-                <div className="grid gap-6">
-                  {blogs.length === 0 ? (
-                    <Card>
-                      <CardContent className="pt-6">
-                        <p className="text-muted-foreground text-center py-8">
-                          Blog posts coming soon!
-                        </p>
-                      </CardContent>
-                    </Card>
-                  ) : (
-                    blogs.map((blog) => (
-                      <Card
-                        key={blog.slug}
-                        className="cursor-pointer hover:border-primary transition-colors group"
-                        onClick={() => setSelectedBlogSlug(blog.slug)}
-                      >
-                        <CardContent className="pt-6">
-                          <h3 className="text-xl font-bold mb-2 group-hover:text-primary transition-colors">
-                            {blog.title}
-                          </h3>
-                          <time className="text-sm text-muted-foreground">{blog.date}</time>
-                        </CardContent>
-                      </Card>
-                    ))
-                  )}
-                </div>
-              ) : (
-                <div>
-                  {(() => {
-                    const selectedBlog = blogs.find(b => b.slug === selectedBlogSlug);
-                    if (!selectedBlog) return <div>Blog not found</div>;
-                    return <BlogPost path={selectedBlog.file} />;
-                  })()}
-                </div>
-              )}
-            </div>
-          )}
-        </div>
       </main>
     </div>
   );

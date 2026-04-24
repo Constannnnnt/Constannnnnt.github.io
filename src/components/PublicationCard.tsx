@@ -1,18 +1,11 @@
-import { Tag } from "./Tag";
-import { FileText, Play, ChevronDown, MoreHorizontal } from "lucide-react";
-import { useState, useRef, useEffect } from "react";
+import { FileText, Play, Code, ChevronDown } from "lucide-react";
+import { useState, memo } from "react";
 import { cn, resolveUrl } from "@/lib/utils";
-import { Button } from "@/components/ui/button";
-import {
-  Collapsible,
-  CollapsibleContent,
-  CollapsibleTrigger,
-} from "@/components/ui/collapsible";
 
 interface PublicationCardProps {
   title: string;
   venue: string;
-  tags: string[];
+  tags?: string[];
   authors: string;
   highlightAuthor?: string;
   paperUrl?: string;
@@ -21,14 +14,14 @@ interface PublicationCardProps {
   gifUrl?: string;
   codeUrl?: string;
   summary?: string[];
+  id?: number;
   isOpen?: boolean;
-  onToggle?: () => void;
+  onToggle?: (id?: number) => void;
 }
 
-export const PublicationCard = ({
+export const PublicationCard = memo(({
   title,
   venue,
-  tags,
   authors,
   highlightAuthor,
   paperUrl,
@@ -37,87 +30,51 @@ export const PublicationCard = ({
   gifUrl,
   codeUrl,
   summary,
+  id,
   isOpen: propIsOpen,
   onToggle,
 }: PublicationCardProps) => {
   const [localIsOpen, setLocalIsOpen] = useState(false);
-  const [showAllTags, setShowAllTags] = useState(false);
-  const [isTagsOverflowing, setIsTagsOverflowing] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
-  const tagsRef = useRef<HTMLDivElement>(null);
   
   const isOpen = propIsOpen !== undefined ? propIsOpen : localIsOpen;
-  const toggle = onToggle || (() => setLocalIsOpen(!localIsOpen));
-
-  useEffect(() => {
-    const checkOverflow = () => {
-      if (tagsRef.current) {
-        // Approximate check: if height > one line (e.g., 32px)
-        setIsTagsOverflowing(tagsRef.current.scrollHeight > 32);
-      }
-    };
-    checkOverflow();
-    window.addEventListener('resize', checkOverflow);
-    return () => window.removeEventListener('resize', checkOverflow);
-  }, [tags]);
+  const toggle = () => onToggle ? onToggle(id) : setLocalIsOpen(!localIsOpen);
 
   return (
     <div 
-      className="flex flex-col md:flex-row gap-8 mb-12 group"
+      className="grid grid-cols-1 md:grid-cols-12 gap-4 lg:gap-6 group py-4 border-b border-border/10 last:border-0 hover:bg-muted/5 transition-all duration-300 px-4 -mx-4 rounded-xl items-start"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      {imageUrl && (
-        <div className="flex-shrink-0 w-full md:w-64 h-auto aspect-[4/3] rounded-none overflow-hidden opacity-90 group-hover:opacity-100 transition-opacity bg-muted/20">
-          <img 
-            src={resolveUrl(isHovered && gifUrl ? gifUrl : imageUrl)} 
-            alt={title} 
-            className="w-full h-full object-contain transition-all duration-500" 
-          />
-        </div>
-      )}
-      <div className="flex-1 space-y-3">
-        <div className="space-y-2">
-            <div className="w-full border-b border-border pb-1">
-                <span className="font-mono text-xs font-bold text-muted-foreground tracking-widest block">
-                    {venue}
-                </span>
-            </div>
-            
-            <div className="relative flex items-start gap-2 pr-12">
-                <div 
-                    ref={tagsRef}
-                    className={cn(
-                        "flex flex-wrap gap-2 transition-all duration-300 overflow-hidden",
-                        showAllTags ? "max-h-[500px]" : "max-h-[28px]"
-                    )}
-                >
-                    {tags.map((tag) => (
-                        <span key={tag} className="tag-brutal whitespace-nowrap">
-                            {tag}
-                        </span>
-                    ))}
-                </div>
-                {isTagsOverflowing && (
-                    <button 
-                        onClick={() => setShowAllTags(!showAllTags)}
-                        className="absolute right-0 top-0 p-1 hover:bg-muted rounded transition-colors"
-                        title={showAllTags ? "Show less" : "Show more tags"}
-                    >
-                        <MoreHorizontal className={cn("w-4 h-4 transition-transform", showAllTags && "rotate-90")} />
-                    </button>
-                )}
-            </div>
-        </div>
+      {/* LEFT COLUMN: Context (Venue, Thumbnail) */}
+      <div className="md:col-span-3 lg:col-span-2 flex flex-col gap-2">
+        <span className="font-mono text-xs font-bold text-primary uppercase tracking-widest block">
+            {venue}
+        </span>
+        
+        {imageUrl && (
+          <div className="w-full aspect-[4/3] rounded overflow-hidden bg-muted/10 border border-border/10 opacity-80 group-hover:opacity-100 transition-opacity duration-300 shadow-sm">
+            <img 
+              src={resolveUrl(isHovered && gifUrl ? gifUrl : imageUrl)} 
+              alt={title} 
+              className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" 
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+        )}
+      </div>
 
-        <h3 className="text-2xl font-serif font-bold leading-tight group-hover:text-primary transition-colors">
+      {/* RIGHT COLUMN: Typography & Content */}
+      <div className="md:col-span-9 lg:col-span-10 flex flex-col gap-1.5">
+        <h3 className="text-lg lg:text-xl font-sans font-medium leading-tight text-foreground/90 group-hover:text-primary transition-colors duration-300 pr-8">
           {title}
         </h3>
         
-        <p className="text-base text-foreground/80 font-light leading-relaxed">
+        <p className="text-sm text-foreground/70 font-light leading-relaxed">
           {highlightAuthor ? (
             authors.split(', ').map((author, i) => (
-              <span key={i} className={author === highlightAuthor ? "font-medium text-foreground border-b border-primary/40" : ""}>
+              <span key={i} className={author === highlightAuthor ? "font-medium text-foreground underline decoration-primary/40 underline-offset-4" : ""}>
                 {author}{i < authors.split(', ').length - 1 ? ', ' : ''}
               </span>
             ))
@@ -126,36 +83,48 @@ export const PublicationCard = ({
           )}
         </p>
 
-        <div className="flex items-center gap-6 pt-3">
+        {/* TL;DR Immediate View */}
+        {summary && summary.length > 0 && (
+          <p className="text-sm text-muted-foreground italic leading-relaxed mt-1 line-clamp-2">
+            "{summary[0]}"
+          </p>
+        )}
+
+        {/* Links & Actions */}
+        <div className="flex flex-wrap items-center gap-6 mt-2 pt-2 border-t border-border/5">
           {paperUrl && (
-             <a href={resolveUrl(paperUrl)} className="flex items-center text-xs font-mono font-bold uppercase tracking-wider hover:text-primary transition-colors hover:underline">
-                PDF
+             <a href={resolveUrl(paperUrl)} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 text-xs font-mono font-bold uppercase tracking-wider text-muted-foreground hover:text-primary transition-colors">
+                <FileText className="w-3.5 h-3.5" /> PDF
              </a>
           )}
           {videoUrl && (
-             <a href={resolveUrl(videoUrl)} className="flex items-center text-xs font-mono font-bold uppercase tracking-wider hover:text-primary transition-colors hover:underline">
-                Video
+             <a href={resolveUrl(videoUrl)} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 text-xs font-mono font-bold uppercase tracking-wider text-muted-foreground hover:text-primary transition-colors">
+                <Play className="w-3.5 h-3.5" /> Video
              </a>
           )}
           {codeUrl && (
-             <a href={resolveUrl(codeUrl)} className="flex items-center text-xs font-mono font-bold uppercase tracking-wider hover:text-primary transition-colors hover:underline">
-                Code
+             <a href={resolveUrl(codeUrl)} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 text-xs font-mono font-bold uppercase tracking-wider text-muted-foreground hover:text-primary transition-colors">
+                <Code className="w-3.5 h-3.5" /> Code
              </a>
           )}
           
-          <button 
-            onClick={toggle}
-            className="flex items-center text-xs font-mono text-muted-foreground hover:text-foreground uppercase tracking-wider ml-auto hover:bg-muted/50 px-2 py-1 transition-colors"
-          >
-            {isOpen ? "Close Summary" : "Read Summary"}
-          </button>
+          {summary && summary.length > 1 && (
+            <button 
+                onClick={toggle}
+                className="flex items-center gap-1 text-xs font-mono font-bold text-muted-foreground hover:text-foreground uppercase tracking-wider ml-auto transition-colors"
+            >
+                {isOpen ? "Less Context" : "More Context"}
+                <ChevronDown className={cn("w-3.5 h-3.5 transition-transform", isOpen && "rotate-180")} />
+            </button>
+          )}
         </div>
         
-        {isOpen && (
-            <div className="mt-4 p-0 animate-fade-in border-l-2 border-primary/20 pl-6">
-                 <ul className="list-none space-y-2">
-                    {summary?.map((point, i) => (
-                        <li key={i} className="text-base font-light text-foreground/80 leading-relaxed">{point}</li>
+        {/* Expanded Summary */}
+        {isOpen && summary && summary.length > 1 && (
+            <div className="mt-4 pt-4 border-t border-border/10 animate-fade-in">
+                 <ul className="list-disc pl-5 space-y-3">
+                    {summary.slice(1).map((point, i) => (
+                        <li key={i} className="text-sm font-light text-foreground/80 leading-relaxed marker:text-primary/50">{point}</li>
                     ))}
                  </ul>
             </div>
@@ -163,4 +132,6 @@ export const PublicationCard = ({
       </div>
     </div>
   );
-};
+});
+
+PublicationCard.displayName = "PublicationCard";

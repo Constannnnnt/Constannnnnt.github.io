@@ -63,7 +63,7 @@ export const Timeline = ({ items, className }: TimelineProps) => {
   return (
     <div className={cn("space-y-6", className)}>
       <div className="flex items-baseline justify-between">
-        <h3 className="text-sm font-serif tracking-widest text-foreground font-bold uppercase">
+        <h3 className="text-sm font-sans tracking-widest text-muted-foreground font-medium uppercase">
           Experience
         </h3>
         
@@ -87,23 +87,23 @@ export const Timeline = ({ items, className }: TimelineProps) => {
           
           return (
             <div key={index} className="relative group">
-              <div className="absolute -left-[38px] top-[9px] w-[9px] h-[9px] bg-border group-hover:bg-primary transition-colors duration-200" />
+              <div className="absolute -left-[38px] top-[9px] w-[9px] h-[9px] bg-border/50 rounded-full group-hover:bg-border transition-colors duration-200" />
 
               <Collapsible
                 open={isExpanded}
                 onOpenChange={() => setExpandedIndex(isExpanded ? null : globalIndex)}
               >
                 <CollapsibleTrigger asChild>
-                  <button className="text-left w-full group-hover:translate-x-1 transition-transform duration-200 ease-out outline-none space-y-1">
-                    <h4 className="font-serif text-lg font-bold text-foreground leading-tight group-hover:text-primary transition-colors">
+                  <button className="text-left w-full group-hover:translate-x-1 transition-transform duration-300 ease-out outline-none space-y-1">
+                    <h4 className="font-sans text-lg font-medium text-foreground leading-tight group-hover:text-primary transition-colors">
                       {item.title}
                     </h4>
                     <div className="flex flex-wrap items-center gap-x-2 text-xs font-mono">
                       <span className="text-muted-foreground font-medium">{item.subtitle}</span>
-                      <span className="text-muted-foreground/40">•</span>
-                      <span className="text-muted-foreground/70">{period ? period.range : item.date}</span>
+                      <span className="text-muted-foreground/60">•</span>
+                      <span className="text-muted-foreground/80 font-sans tracking-wide text-[11px]">{period ? period.range : item.date}</span>
                       {period && period.duration && (
-                        <span className="text-muted-foreground/50 italic">({period.duration})</span>
+                        <span className="text-muted-foreground/50 font-sans text-[11px]">({period.duration})</span>
                       )}
                     </div>
                   </button>
@@ -112,7 +112,7 @@ export const Timeline = ({ items, className }: TimelineProps) => {
                 <CollapsibleContent className="overflow-hidden data-[state=open]:animate-accordion-down data-[state=closed]:animate-accordion-up">
                   <div className="pt-4">
                     {item.description && (
-                        <div className="text-sm font-light text-foreground/90 leading-relaxed border-l border-border pl-4 py-1 italic">
+                        <div className="text-sm font-light text-foreground/80 leading-relaxed border-l border-border/40 pl-4 py-1 italic">
                         {item.description}
                         </div>
                     )}

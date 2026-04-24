@@ -28,52 +28,51 @@ export const ProfileSidebar = ({
       </div>
 
       <div className="p-8 flex flex-col items-center">
-        <div className="relative mb-6 group">
-          <div className="absolute -inset-0.5 bg-gradient-to-r from-primary to-accent opacity-50 blur group-hover:opacity-75 transition duration-500 rounded-full"></div>
-          <Avatar className="w-40 h-40 relative border-4 border-background shadow-xl">
+        <div className="relative mb-8 group">
+          <Avatar className="w-40 h-40 relative border border-border/40 shadow-sm transition-transform duration-500 hover:scale-[1.02]">
             <AvatarImage src={resolveUrl(imageUrl)} alt={name} className="object-cover" />
-            <AvatarFallback>{name.split(' ').map(n => n[0]).join('')}</AvatarFallback>
+            <AvatarFallback className="bg-muted text-muted-foreground font-sans text-2xl">{name.split(' ').map(n => n[0]).join('')}</AvatarFallback>
           </Avatar>
         </div>
 
-        <div className="text-center space-y-2 mb-6">
-          <h1 className="text-3xl font-serif font-bold text-foreground tracking-tight">{name}</h1>
-          <Badge variant="secondary" className="px-4 py-1 text-sm font-medium rounded-full">
+        <div className="text-center space-y-3 mb-8">
+          <h1 className="text-3xl font-sans font-medium text-foreground tracking-tight">{name}</h1>
+          <Badge variant="secondary" className="px-4 py-1 text-xs font-sans tracking-wide rounded-full bg-secondary/50 text-secondary-foreground/80 border border-border/30">
             {title}
           </Badge>
         </div>
 
-        <div className="flex gap-2 justify-center mb-8">
-          <Button variant="ghost" size="icon" className="rounded-none hover:bg-transparent hover:text-primary transition-colors duration-300" asChild>
+        <div className="flex gap-1 justify-center mb-10">
+          <Button variant="ghost" size="icon" className="hover:bg-muted/50 hover:text-primary transition-colors duration-300 rounded-full" asChild>
             <a href={`mailto:${email}`} aria-label="Email">
-              <Mail className="w-5 h-5" />
+              <Mail className="w-4 h-4" />
             </a>
           </Button>
           {social.github && (
-            <Button variant="ghost" size="icon" className="rounded-none hover:bg-transparent hover:text-primary transition-colors duration-300" asChild>
+            <Button variant="ghost" size="icon" className="hover:bg-muted/50 hover:text-primary transition-colors duration-300 rounded-full" asChild>
               <a href={social.github} target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-                <Github className="w-5 h-5" />
+                <Github className="w-4 h-4" />
               </a>
             </Button>
           )}
           {social.twitter && (
-            <Button variant="ghost" size="icon" className="rounded-none hover:bg-transparent hover:text-primary transition-colors duration-300" asChild>
+            <Button variant="ghost" size="icon" className="hover:bg-muted/50 hover:text-primary transition-colors duration-300 rounded-full" asChild>
               <a href={social.twitter} target="_blank" rel="noopener noreferrer" aria-label="Twitter">
-                <Twitter className="w-5 h-5" />
+                <Twitter className="w-4 h-4" />
               </a>
             </Button>
           )}
           {social.linkedin && (
-            <Button variant="ghost" size="icon" className="rounded-none hover:bg-transparent hover:text-primary transition-colors duration-300" asChild>
+            <Button variant="ghost" size="icon" className="hover:bg-muted/50 hover:text-primary transition-colors duration-300 rounded-full" asChild>
               <a href={social.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-                <Linkedin className="w-5 h-5" />
+                <Linkedin className="w-4 h-4" />
               </a>
             </Button>
           )}
           {social.googleScholar && (
-            <Button variant="ghost" size="icon" className="rounded-none hover:bg-transparent hover:text-primary transition-colors duration-300" asChild>
+            <Button variant="ghost" size="icon" className="hover:bg-muted/50 hover:text-primary transition-colors duration-300 rounded-full" asChild>
               <a href={social.googleScholar} target="_blank" rel="noopener noreferrer" aria-label="Google Scholar">
-                <GraduationCap className="w-5 h-5" />
+                <GraduationCap className="w-4 h-4" />
               </a>
             </Button>
           )}
