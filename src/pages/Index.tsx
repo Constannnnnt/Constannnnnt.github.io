@@ -104,10 +104,11 @@ const Index = () => {
       }
 
       return i === 0 ? (
-        <div key={i} className="flex items-start gap-4">
-          <BellRing className="w-5 h-5 shrink-0 mt-0.5 text-muted-foreground/60" />
-          <div className="inline"><ReactMarkdown rehypePlugins={[rehypeRaw]}>{paragraph}</ReactMarkdown></div>
-        </div>
+        // <div key={i} className="flex items-start gap-4">
+        //   <BellRing className="w-5 h-5 shrink-0 mt-0.5 text-muted-foreground/60" />
+        //   <div className="inline"><ReactMarkdown rehypePlugins={[rehypeRaw]}>{paragraph}</ReactMarkdown></div>
+        // </div>
+        <></>
       ) : (
         <ReactMarkdown key={i} rehypePlugins={[rehypeRaw]}>{paragraph}</ReactMarkdown>
       );
@@ -223,7 +224,7 @@ const Index = () => {
               </div>
 
               <div className="text-base text-foreground/80 space-y-4 leading-relaxed font-light">
-                <h2 className="text-2xl font-light text-foreground mb-6">你好.</h2>
+                {/* <h2 className="text-2xl font-light text-foreground mb-6">你好.</h2> */}
                 {renderedBio}
               </div>
             </section>

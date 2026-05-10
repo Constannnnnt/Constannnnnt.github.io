@@ -1,29 +1,29 @@
 profile:
   name: "Constant, Yuan Chen"
-  title: "Researcher & Engineer"
+  title: ""
   email: "constant.chen@uwaterloo.ca"
   imageUrl: "/assets/avatar.jpg"
   bio: |
-    I am actively looking for full-time opportunities to work in the field of <u>HCI</u>, <u>XR</u>, and <u>Agentic AI</u>.
+    # I am actively looking for full-time opportunities to work in the field of <u>HCI</u>, <u>XR</u>, and <u>Agentic AI</u>.
 
-    I design and build systems that enable seamless interaction anytime, anywhere, and study how people behave and interact across different computing environments. My PhD focuses on pervasive desktop computing and context-aware mixed environments using projection mapping, sensing, and vision inputs.
+    I am a researcher and engineer building human-centric systems, with an emphasis on understanding user's intent and how to better support users in their tasks.
+    
+    My PhD focuses on pervasive desktop computing and context-aware mixed environments using projection mapping, sensing, and vision inputs, under the supervision of <a class="primary text-highlight hover:underline transition-colors" href="https://cristal.univ-lille.fr/~casiez/">Prof. Géry Casiez</a>, <a class="primary text-highlight hover:underline transition-colors" href="https://malacria.fr/">Dr. Sylvain Malacria</a>, <a class="primary text-highlight hover:underline transition-colors" href="https://www.nonsequitoria.com/">Prof. Daniel Vogel</a>, and <a class="primary text-highlight hover:underline transition-colors" href="https://cs.uwaterloo.ca/~lank/">the late Prof. Edward Lank</a>.
 
-    I also research Human–AI interaction, with an emphasis on how people understand, collaborate with, and benefit from agentic systems, which I both study and build.
+    I am currently working on local inference and <a class="primary text-highlight hover:underline transition-colors" href="https://github.com/Constannnnnt/Anya">generative user interfaces</a>.
 
-    Feel free to get in touch if you want to discuss collaboration opportunities.
-  bioTooltip:
-    paragraphIndex: 1
-    highlightLabel: " My PhD "
-    text: "I was fortunate and grateful to be supervised by"
-    supervisors:
-      - name: "Prof. Géry Casiez"
-        url: "https://cristal.univ-lille.fr/~casiez/"
-      - name: "Dr. Sylvain Malacria"
-        url: "https://malacria.fr/"
-      - name: "Prof. Daniel Vogel"
-        url: "https://www.nonsequitoria.com/"
-      - name: "the late Prof. Edward Lank"
-        url: "https://cs.uwaterloo.ca/~lank/"
+  # bioTooltip:
+  #   paragraphIndex: 1
+  #   highlightLabel: " My PhD "
+  #   supervisors:
+  #     - name: "Prof. Géry Casiez"
+  #       url: "https://cristal.univ-lille.fr/~casiez/"
+  #     - name: "Dr. Sylvain Malacria"
+  #       url: "https://malacria.fr/"
+  #     - name: "Prof. Daniel Vogel"
+  #       url: "https://www.nonsequitoria.com/"
+  #     - name: "the late Prof. Edward Lank"
+  #       url: "https://cs.uwaterloo.ca/~lank/"
 
   social:
     github: "https://github.com/Constannnnnt"
@@ -197,6 +197,13 @@ projects:
   #   githubUrl: "https://www.kaggle.com/competitions/gemini-3/writeups/new-writeup-1765563952619"
   #   summary:
   #     - "Designed and vibe-implemented the UI/UX that guides developers through an exploration debugging workflow."
+  - title: "Anya"
+    description: "Generative user interfaces that adapt based on user interactions and preferences."
+    imageUrl: "/assets/img/anya.png"
+    tags: ["Generative UI"]
+    githubUrl: "https://github.com/Constannnnnt/Anya"
+    summary:
+      - "Generative user interfaces that adapt based on user interactions and preferences."
 
 timeline:
   - date: "2025"
