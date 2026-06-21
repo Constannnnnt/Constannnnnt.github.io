@@ -42,7 +42,7 @@ export const PublicationCard = memo(({
 
   return (
     <div 
-      className="grid grid-cols-1 md:grid-cols-12 gap-4 lg:gap-6 group py-4 border-b border-border/10 last:border-0 hover:bg-muted/5 transition-all duration-300 px-4 -mx-4 rounded-xl items-start"
+      className="grid grid-cols-1 md:grid-cols-12 gap-4 lg:gap-6 py-4 border-b border-border/20 last:border-0 px-4 -mx-4 items-start"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
@@ -53,11 +53,11 @@ export const PublicationCard = memo(({
         </span>
         
         {imageUrl && (
-          <div className="w-full aspect-[4/3] rounded overflow-hidden bg-muted/10 border border-border/10 opacity-80 group-hover:opacity-100 transition-opacity duration-300 shadow-sm">
+          <div className="w-full aspect-[4/3] rounded overflow-hidden bg-card border border-border/20 shadow-sm">
             <img 
               src={resolveUrl(isHovered && gifUrl ? gifUrl : imageUrl)} 
               alt={title} 
-              className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" 
+              className="w-full h-full object-cover" 
               loading="lazy"
               decoding="async"
             />
@@ -67,7 +67,7 @@ export const PublicationCard = memo(({
 
       {/* RIGHT COLUMN: Typography & Content */}
       <div className="md:col-span-9 lg:col-span-10 flex flex-col gap-1.5">
-        <h3 className="text-lg lg:text-xl font-sans font-medium leading-tight text-foreground/90 group-hover:text-primary transition-colors duration-300 pr-8">
+        <h3 className="text-lg lg:text-xl font-sans font-medium leading-tight text-foreground pr-8">
           {title}
         </h3>
         

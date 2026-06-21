@@ -4,7 +4,7 @@ import rehypeRaw from "rehype-raw";
 import { NavTabs } from "@/components/NavTabs";
 import { PublicationCard } from "@/components/PublicationCard";
 import { ProjectCard } from "@/components/ProjectCard";
-import { ArrowLeft, BellRing, Mail, Github, Twitter, Linkedin, GraduationCap, Menu } from "lucide-react";
+import { ArrowLeft, Mail, Github, Twitter, Linkedin, GraduationCap, Menu } from "lucide-react";
 import { cn, resolveUrl } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
@@ -14,6 +14,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { AnimatedGreeting } from "@/components/AnimatedGreeting";
 
 const Index = () => {
   const { data: config, isLoading, error } = useConfig();
@@ -189,9 +190,7 @@ const Index = () => {
                   <AvatarFallback className="bg-muted text-muted-foreground font-sans text-3xl">{name.split(' ').map((n: string) => n[0]).join('')}</AvatarFallback>
                 </Avatar>
                 <div className="flex flex-col justify-center space-y-3 pt-2">
-                  <h1 className="text-3xl sm:text-4xl font-semibold tracking-tight text-foreground">
-                    {name}
-                  </h1>
+                  <AnimatedGreeting />
                   <p className="text-base sm:text-lg text-muted-foreground font-light leading-relaxed">
                     {title}
                   </p>

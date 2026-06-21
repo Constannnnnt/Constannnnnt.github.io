@@ -2,7 +2,7 @@ profile:
   name: "Constant, Yuan Chen"
   title: ""
   email: "constant.chen@uwaterloo.ca"
-  imageUrl: "/assets/avatar.jpg"
+  imageUrl: "/assets/img/avatar.png"
   bio: |
     # I am actively looking for full-time opportunities to work in the field of <u>HCI</u>, <u>XR</u>, and <u>Agentic AI</u>.
 
@@ -10,7 +10,7 @@ profile:
     
     My PhD focuses on pervasive desktop computing and context-aware mixed environments using projection mapping, sensing, and vision inputs, under the supervision of <a class="primary text-highlight hover:underline transition-colors" href="https://cristal.univ-lille.fr/~casiez/">Prof. Géry Casiez</a>, <a class="primary text-highlight hover:underline transition-colors" href="https://malacria.fr/">Dr. Sylvain Malacria</a>, <a class="primary text-highlight hover:underline transition-colors" href="https://www.nonsequitoria.com/">Prof. Daniel Vogel</a>, and <a class="primary text-highlight hover:underline transition-colors" href="https://cs.uwaterloo.ca/~lank/">the late Prof. Edward Lank</a>.
 
-    I am currently working on local inference and <a class="primary text-highlight hover:underline transition-colors" href="https://github.com/Constannnnnt/Anya">generative user interfaces</a>.
+    I am currently researching on  <a class="primary text-highlight hover:underline transition-colors" href="https://github.com/ggml-org/llama.cpp">inference</a>, agent harness and <a class="primary text-highlight hover:underline transition-colors" href="https://github.com/Constannnnnt/Anya">generative user interfaces</a>.
 
   # bioTooltip:
   #   paragraphIndex: 1
@@ -41,7 +41,7 @@ publications:
     gifUrl: "/assets/img/scenelang.png"
     paperUrl: "https://openreview.net/forum?id=Vbp5QWnJtt&noteId=Ilwn4YEgg0"
     summary:
-      - "Explores using Vision-Language Models for scene representation generation."
+      - "Scene representation generation using Vision-Language Models."
     categories: ["computer", ""]
 
   - title: "Understanding Dynamic Peephole Pointing using Coupled and Decoupled Target Acquisition on Single and Multiple Surfaces"
@@ -56,8 +56,7 @@ publications:
     videoUrl: "https://youtu.be/jQPJ5JysA6Q"
     codeUrl: "https://github.com/Constannnnnt/Peephole-Interactions"
     summary:
-      - "Proposes a dynamic peephole interaction system across single and multiple surfaces."
-      - "Evaluates coupled and decoupled target acquisition methods and investigates their impacts on human behaviors."
+      - "Evaluates coupled and decoupled dynamic peephole pointing and investigates their impacts on human behaviors."
     categories: ["people", "environment", "connect", "bridge", "computer"]
 
   - title: "LuxAR: A Direct Manipulation Projected Display to Extend and Augment Desktop Computing"
@@ -78,8 +77,7 @@ publications:
     paperUrl: "https://dl.acm.org/doi/abs/10.1145/3670947.3670981"
     videoUrl: "https://youtu.be/Jq5iZiO15bs"
     summary:
-      - "Designed a direct manipulation projected display system"
-      - "Augmented desktop computing with spatial interaction"
+      - "An interactive and context-aware system for pervasive desktop computing."
     categories:
       ["environment", "connect", "bridge", "computer", "interact", "people"]
 
@@ -94,7 +92,7 @@ publications:
     videoUrl: "https://youtu.be/MZCdGWN3lOc"
     codeUrl: "https://github.com/Constannnnnt/VRII-Intended-Interactions"
     summary:
-      - "Studied targeting performance in VR based on intent"
+      - "Investigated how intented interactions on targets impact initial user acquisition behaviors."
     categories: ["computer", "people", "interact"]
 
   - title: "Empirical evaluation of moving target selection in virtual reality using egocentric metaphors"
@@ -107,7 +105,7 @@ publications:
     paperUrl: "https://link.springer.com/chapter/10.1007/978-3-030-85610-6_3"
     videoUrl: "https://youtu.be/VPWXA4C0150"
     summary:
-      - "Evaluated moving target selection in VR"
+      - "Investigated how egocentric acquisition metaphors impact moving target selection."
     categories: ["computer", "people", "interact"]
 
   - title: "Global Scene Filtering, Exploration, and Pointing in Occluded Virtual Space"
@@ -120,7 +118,7 @@ publications:
     paperUrl: "https://link.springer.com/chapter/10.1007/978-3-030-85607-6_11"
     videoUrl: "https://youtu.be/qG7r5WtkiUA"
     summary:
-      - "Proposed filtering techniques for occluded spaces"
+      - "Designed and evaluated selection methods in Occluded environment."
     categories: ["computer", "people", "interact"]
 
   - title: "Understanding Viewport- and World-Based Pointing with Everyday Smart Devices in Immersive Augmented Reality"
@@ -133,7 +131,7 @@ publications:
     paperUrl: "https://doi.org/10.1145/3313831.3376592"
     videoUrl: "https://www.youtube.com/watch?v=QQCwILEpABM"
     summary:
-      - "Compared viewport- vs world-based pointing in AR"
+      - "Compared viewport- vs world-based pointing in Augmented physical space."
     categories:
       ["computer", "people", "interact", "environment", "connect", "bridge"]
 

@@ -6,50 +6,49 @@
 
 @layer base {
   :root {
-    /* Sophisticated Minimalist Palette (Zinc base with soft sand accent) */
-    --background: 0 0% 100%;
-    --foreground: 240 10% 15%; /* Zinc 900 */
+    /* Clean neutral light palette with a crisp link accent */
+    --background: 240 20% 98%;
+    --foreground: 240 10% 10%;
 
     --card: 0 0% 100%;
-    --card-foreground: 240 10% 15%;
+    --card-foreground: 240 10% 10%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 240 10% 15%;
+    --popover-foreground: 240 10% 10%;
 
-    /* Soft warm sand/gold accent for taste */
-    --primary: 35 25% 60%; 
+    --primary: 215 68% 43%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 240 5% 96%; /* Zinc 100 */
-    --secondary-foreground: 240 10% 15%;
+    --secondary: 240 8% 94%;
+    --secondary-foreground: 240 10% 10%;
 
-    --muted: 240 5% 96%;
-    --muted-foreground: 240 4% 46%; /* Zinc 500 */
+    --muted: 240 8% 94%;
+    --muted-foreground: 240 5% 38%;
 
-    --accent: 35 25% 60%; /* Warm sand accent */
+    --accent: 215 68% 43%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 240 6% 90%; /* Zinc 200 */
-    --input: 240 6% 90%;
-    --ring: 240 5% 65%; /* Zinc 400 */
+    --border: 240 7% 86%;
+    --input: 240 7% 86%;
+    --ring: 215 68% 43%;
 
     --radius: 0.5rem; /* Soft, elegant rounded corners */
 
     /* Tag Specifics */
-    --tag-bg: 240 5% 96%;
-    --tag-border: 240 6% 90%;
+    --tag-bg: 240 8% 94%;
+    --tag-border: 240 7% 86%;
 
-    --sidebar-background: 0 0% 100%; /* Pure white sidebar for cleanliness */
-    --sidebar-foreground: 240 10% 15%;
-    --sidebar-primary: 35 25% 60%;
+    --sidebar-background: 240 20% 98%;
+    --sidebar-foreground: 240 10% 10%;
+    --sidebar-primary: 215 68% 43%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 5% 96%;
-    --sidebar-accent-foreground: 240 10% 15%;
-    --sidebar-border: 240 6% 90%;
-    --sidebar-ring: 240 5% 65%;
+    --sidebar-accent: 240 8% 94%;
+    --sidebar-accent-foreground: 240 10% 10%;
+    --sidebar-border: 240 7% 86%;
+    --sidebar-ring: 215 68% 43%;
   }
 
   .dark {
